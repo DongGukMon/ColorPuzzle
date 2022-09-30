@@ -16,3 +16,8 @@ export const themeState = atom({
   key: `themeState${Math.random()}`,
   default: lightTheme,
 });
+
+export const stopwatchPropsState = atom({
+  key: `stopwatchPropsState${Math.random()}`,
+  default: {start: true, stop: false, reset: false, record: '00:00:00:000'},
+});

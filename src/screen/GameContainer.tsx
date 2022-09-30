@@ -63,7 +63,7 @@ const GameContainer = () => {
         setIsVisible={setIsModalVisible}
       />
       <GamePage index={focusedIndex} />
-      <Header setIsStarted={setIsStarted} />
+      <Header setIsStarted={setIsStarted} isEnded={isModalVisible} />
       <ButtonContainer>
         {Array.from({length: 5}).map((_: unknown, index: number) => (
           <ButtonWrapper key={index}>

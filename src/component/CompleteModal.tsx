@@ -1,8 +1,13 @@
 import React, {useCallback} from 'react';
 import {Modal} from 'react-native';
-import {useSetRecoilState} from 'recoil';
+import {useRecoilState, useRecoilValue, useSetRecoilState} from 'recoil';
 import styled from 'styled-components/native';
-import {isStartedState, puzzleSetState} from '../atom/shared';
+import {
+  isStartedState,
+  puzzleSetState,
+  stopwatchPropsState,
+  themeState,
+} from '../atom/shared';
 import {shuffle} from '../utils/shuffle';
 import ModalButton from './ModalButton';
 
@@ -37,7 +42,7 @@ const Title = styled.Text`
 
 const Record = styled.Text`
   color: ${(props: {theme: {[k: string]: string}}) => props.theme.modalMain};
-  font-size: 64px;
+  font-size: 36px;
   font-weight: bold;
 `;
 const SectionBox = styled.View`
@@ -59,24 +64,42 @@ const CompleteModal = ({
 }) => {
   const setIsStarted = useSetRecoilState(isStartedState);
   const setPuzzleSet = useSetRecoilState(puzzleSetState);
+  const theme = useRecoilValue(themeState);
+  const [stopwatchState, setStopwatchState] =
+    useRecoilState(stopwatchPropsState);
 
   const onRetryClick = useCallback(() => {
     setIsVisible(false);
     setPuzzleSet(shuffle());
+    setStopwatchState({
+      start: false,
+      stop: true,
+      reset: true,
+      record: '00:00:00:000',
+    });
   }, []);
   const onMainClick = useCallback(() => {
     setIsVisible(false);
     setIsStarted(false);
+    setPuzzleSet(shuffle());
+    setStopwatchState({
+      start: false,
+      stop: true,
+      reset: true,
+      record: '00:00:00:000',
+    });
   }, []);
   return (
     <Modal visible={isVisible} transparent={true}>
       <ModalBackground>
         <ModalContainer>
           <SectionBox height={70}>
-            <Title>It's lined up in sky blue</Title>
+            <Title>
+              It's lined up in {theme.targetColor.toLocaleLowerCase()}
+            </Title>
           </SectionBox>
           <SectionBox height={160}>
-            <Record>15:35:05</Record>
+            <Record>{stopwatchState.record}</Record>
           </SectionBox>
           <ButtonContainer height={120}>
             <ModalButton text="다시하기" callback={onRetryClick} type="fill" />
