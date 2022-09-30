@@ -1,21 +1,27 @@
 import {increaseCounter} from './increaseCounter';
 import {numberToName} from './numberToName';
 
-export const patternA = (
-  puzzleSet: number[],
-  prevIndex: number,
-  pageIndex: number,
-  nextIndex: number,
-) => {
+interface puzzleSetType {
+  first: number;
+  second: number;
+  third: number;
+  fourth: number;
+  fifth: number;
+}
+
+export const patternA = (puzzleSet: puzzleSetType, index: number) => {
+  const puzzleValues = Object.values(puzzleSet);
+  const puzzleLength = puzzleValues.length;
+  const prevIndex = index === 0 ? puzzleLength - 1 : index - 1;
+  const nextIndex = index === puzzleLength - 1 ? 0 : index + 1;
+
   const prevPage = numberToName(prevIndex);
-  const page = numberToName(pageIndex);
+  const page = numberToName(index);
   const nextPage = numberToName(nextIndex);
 
-  const puzzleLength = puzzleSet.length;
-
-  const prevPageValue = increaseCounter(puzzleSet[prevIndex], puzzleLength);
-  const pageValue = increaseCounter(puzzleSet[pageIndex], puzzleLength);
-  const nextValue = increaseCounter(puzzleSet[nextIndex], puzzleLength);
+  const prevPageValue = increaseCounter(puzzleValues[prevIndex], puzzleLength);
+  const pageValue = increaseCounter(puzzleValues[index], puzzleLength);
+  const nextValue = increaseCounter(puzzleValues[nextIndex], puzzleLength);
 
   const newValues = {
     [prevPage]: prevPageValue,

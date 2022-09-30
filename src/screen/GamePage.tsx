@@ -20,11 +20,7 @@ const GamePage = ({index}: {index: number}) => {
   );
 
   const onScreenPress = () => {
-    const values = Object.values(puzzleSet);
-    const prevIndex = index === 0 ? values.length - 1 : index - 1;
-    const nextIndex = index === values.length - 1 ? 0 : index + 1;
-
-    const newPuzzleSet = patternA(values, prevIndex, index, nextIndex);
+    const newPuzzleSet = patternA(puzzleSet, index);
 
     setPuzzleSet({...puzzleSet, ...newPuzzleSet});
   };

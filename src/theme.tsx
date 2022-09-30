@@ -4,8 +4,12 @@ export const darkTheme = {
   third: '#EE7A76',
   fourth: '#018786',
   fifth: '#3700B3',
+
   text: 'white',
   main: 'black',
+
+  modalMain: '#EE7A76',
+  btnReverse: 'black',
 };
 
 export const lightTheme = {
@@ -14,6 +18,10 @@ export const lightTheme = {
   third: '#EE7A76',
   fourth: '#B8D75B',
   fifth: '#81C6EE',
-  text: 'black',
+
+  text: 'rgba(0,0,0,0.8)',
   main: 'white',
+
+  modalMain: '#81C6EE',
+  btnReverse: 'white',
 };

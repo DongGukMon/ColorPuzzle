@@ -8,7 +8,7 @@ interface styleProps {
 const SMainButton = styled.TouchableOpacity`
   width: 85%;
   height: 70px;
-  background-color: ${(props: styleProps) => props.theme.second};
+  background-color: ${(props: styleProps) => props.theme.fourth};
   justify-content: center;
   align-items: center;
   border-radius: 10px;
