@@ -12,6 +12,8 @@ const SMainButton = styled.TouchableOpacity`
   justify-content: center;
   align-items: center;
   border-radius: 10px;
+  border-width: 2px;
+  border-color: white;
 `;
 const BtnText = styled.Text`
   color: white;
