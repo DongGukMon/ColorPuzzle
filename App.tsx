@@ -22,7 +22,7 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <RecoilRoot>
-        <AppRoot />
+        <AppRoot theme={theme} />
       </RecoilRoot>
     </ThemeProvider>
   );

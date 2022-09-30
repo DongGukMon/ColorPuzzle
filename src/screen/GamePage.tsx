@@ -3,7 +3,6 @@ import styled from 'styled-components/native';
 import {puzzleSetState} from '../atom/shared';
 import {numberToName} from '../utils/numberToName';
 import {useRecoilState} from 'recoil';
-import {nameToNumber} from '../utils/nameToNumber';
 import {patternA} from '../utils/patternA';
 
 const GameBackground = styled.TouchableOpacity`

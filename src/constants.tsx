@@ -5,3 +5,8 @@ export const count = {
   fourth: 'fourth',
   fifth: 'fifth',
 };
+
+export const theme = {
+  dark: 'dark',
+  light: 'light',
+};

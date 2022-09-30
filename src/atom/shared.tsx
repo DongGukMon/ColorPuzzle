@@ -1,4 +1,5 @@
 import {atom} from 'recoil';
+import {lightTheme} from '../theme';
 import {shuffle} from '../utils/shuffle';
 
 export const isStartedState = atom({
@@ -9,4 +10,9 @@ export const isStartedState = atom({
 export const puzzleSetState = atom({
   key: `puzzleSetState:${Math.random()}`,
   default: shuffle(),
+});
+
+export const themeState = atom({
+  key: `themeState${Math.random()}`,
+  default: lightTheme,
 });

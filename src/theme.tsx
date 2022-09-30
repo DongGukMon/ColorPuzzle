@@ -1,4 +1,8 @@
-export const darkTheme = {
+import {theme} from './constants';
+export const darkTheme: {[k: string]: string} = {
+  name: theme.dark,
+  targetColor: 'PUPPLE',
+
   first: '#292929',
   second: '#DF802F',
   third: '#EE7A76',
@@ -12,7 +16,10 @@ export const darkTheme = {
   btnReverse: 'black',
 };
 
-export const lightTheme = {
+export const lightTheme: {[k: string]: string} = {
+  name: theme.light,
+  targetColor: 'SKY BLUE',
+
   first: '#AAAAAA',
   second: '#F2C643',
   third: '#EE7A76',

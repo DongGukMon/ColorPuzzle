@@ -1,8 +1,8 @@
 import React, {useCallback} from 'react';
 import styled from 'styled-components/native';
-import {useSetRecoilState} from 'recoil';
+import {useRecoilValue, useSetRecoilState} from 'recoil';
 import MainButton from '../component/MainButton';
-import {isStartedState} from '../atom/shared';
+import {isStartedState, themeState} from '../atom/shared';
 
 interface styleProps {
   theme: {[key: string]: string};
@@ -31,10 +31,11 @@ const LowerBox = styled.View`
 
 const Home = () => {
   const setIsStarted = useCallback(useSetRecoilState(isStartedState), []);
+  const theme = useRecoilValue(themeState);
   return (
     <Container>
       <UpperBox>
-        <Title>Align to SKY</Title>
+        <Title>Align to {theme.targetColor}</Title>
       </UpperBox>
       <LowerBox>
         <MainButton text="도전하기" callback={() => setIsStarted(true)} />
