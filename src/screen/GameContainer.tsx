@@ -4,8 +4,10 @@ import styled from 'styled-components/native';
 import GamePage from './GamePage';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {numberToName} from '../utils/numberToName';
-import {isStartedState} from '../atom/shared';
-import {useSetRecoilState} from 'recoil';
+import {isStartedState, puzzleSetState} from '../atom/shared';
+import {useSetRecoilState, useRecoilValue} from 'recoil';
+import {isAllSame} from '../utils/isAllSame';
+import CompleteModal from '../component/CompleteModal';
 
 const {width} = Dimensions.get('window');
 
@@ -58,9 +60,20 @@ const BtnText = styled.Text`
 
 const GameContainer = () => {
   const [focusedIndex, setFocusedIndex] = useState(0);
+  const [isModalVisible, setIsModalVisible] = useState(true);
   const setIsStarted = useSetRecoilState(isStartedState);
+  const puzzleSet = useRecoilValue(puzzleSetState);
+
+  if (isAllSame(Object.values(puzzleSet))) {
+    setIsModalVisible(true);
+  }
+
   return (
     <View style={{flex: 1}}>
+      <CompleteModal
+        isVisible={isModalVisible}
+        setIsVisible={setIsModalVisible}
+      />
       <GamePage index={focusedIndex} />
       <Header>
         <BackBtn onPress={() => setIsStarted(false)}>

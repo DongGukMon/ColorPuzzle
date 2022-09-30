@@ -5,6 +5,7 @@ export const darkTheme = {
   fourth: '#018786',
   fifth: '#3700B3',
   text: 'white',
+  main: 'black',
 };
 
 export const lightTheme = {
@@ -14,4 +15,5 @@ export const lightTheme = {
   fourth: '#B8D75B',
   fifth: '#81C6EE',
   text: 'black',
+  main: 'white',
 };
