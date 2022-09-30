@@ -1,5 +1,5 @@
 import React, {useCallback} from 'react';
-import {Modal, TouchableOpacity, View} from 'react-native';
+import {Modal} from 'react-native';
 import {useSetRecoilState} from 'recoil';
 import styled from 'styled-components/native';
 import {isStartedState, puzzleSetState} from '../atom/shared';

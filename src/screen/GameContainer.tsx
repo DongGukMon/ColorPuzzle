@@ -1,32 +1,17 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {View, Dimensions, Text} from 'react-native';
 import styled from 'styled-components/native';
 import GamePage from './GamePage';
-import Icon from 'react-native-vector-icons/Ionicons';
 import {numberToName} from '../utils/numberToName';
 import {isStartedState, puzzleSetState} from '../atom/shared';
-import {useSetRecoilState, useRecoilValue} from 'recoil';
+import {useSetRecoilState, useRecoilValue, useRecoilState} from 'recoil';
 import {isAllSame} from '../utils/isAllSame';
 import CompleteModal from '../component/CompleteModal';
+import Header from '../component/Header';
+import {shuffle} from '../utils/shuffle';
 
 const {width} = Dimensions.get('window');
 
-const Header = styled.View`
-  width: 100%;
-  height: 100px;
-  position: absolute;
-  top: 0px;
-
-  justify-content: center;
-  padding: 20px;
-`;
-const BackBtn = styled.TouchableOpacity`
-  width: 35px;
-  height: 35px;
-  margin-top: 20px;
-  justify-content: center;
-  align-items: center;
-`;
 const ButtonContainer = styled.View`
   height: 120px;
   width: 100%;
@@ -60,13 +45,16 @@ const BtnText = styled.Text`
 
 const GameContainer = () => {
   const [focusedIndex, setFocusedIndex] = useState(0);
-  const [isModalVisible, setIsModalVisible] = useState(true);
+  const [isModalVisible, setIsModalVisible] = useState(false);
   const setIsStarted = useSetRecoilState(isStartedState);
-  const puzzleSet = useRecoilValue(puzzleSetState);
+  const [puzzleSet, setPuzzleSet] = useRecoilState(puzzleSetState);
 
-  if (isAllSame(Object.values(puzzleSet))) {
+  if (isAllSame(Object.values(puzzleSet), true) && !isModalVisible) {
     setIsModalVisible(true);
   }
+  useEffect(() => {
+    setPuzzleSet(shuffle());
+  }, []);
 
   return (
     <View style={{flex: 1}}>
@@ -75,11 +63,7 @@ const GameContainer = () => {
         setIsVisible={setIsModalVisible}
       />
       <GamePage index={focusedIndex} />
-      <Header>
-        <BackBtn onPress={() => setIsStarted(false)}>
-          <Icon name="close" size={30} />
-        </BackBtn>
-      </Header>
+      <Header setIsStarted={setIsStarted} />
       <ButtonContainer>
         {Array.from({length: 5}).map((_: unknown, index: number) => (
           <ButtonWrapper key={index}>
