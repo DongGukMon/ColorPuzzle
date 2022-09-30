@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components/native';
-import {puzzleSetState} from '../atom/shared';
+import {puzzleSetState, selectedPatternState} from '../atom/shared';
 import {numberToName} from '../utils/numberToName';
-import {useRecoilState} from 'recoil';
+import {useRecoilState, useRecoilValue} from 'recoil';
 import {patternA} from '../utils/patternA';
 
 const GameBackground = styled.TouchableOpacity`
@@ -13,13 +13,14 @@ const GameBackground = styled.TouchableOpacity`
 
 const GamePage = ({index}: {index: number}) => {
   const [puzzleSet, setPuzzleSet] = useRecoilState(puzzleSetState);
+  const [selectedPattern, setijwqlkem] = useRecoilState(selectedPatternState);
 
   const pageName = numberToName(
     puzzleSet[numberToName(index) as keyof typeof puzzleSet],
   );
 
   const onScreenPress = () => {
-    const newPuzzleSet = patternA(puzzleSet, index);
+    const newPuzzleSet = selectedPattern(puzzleSet, index);
 
     setPuzzleSet({...puzzleSet, ...newPuzzleSet});
   };
