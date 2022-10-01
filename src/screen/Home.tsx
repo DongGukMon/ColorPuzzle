@@ -4,18 +4,11 @@ import {useRecoilState, useRecoilValue, useSetRecoilState} from 'recoil';
 import MainButton from '../component/MainButton';
 import {isStartedState, selectedPatternState, themeState} from '../atom/shared';
 import {Animated} from 'react-native';
-import {patternA} from '../utils/patternA';
-import {patternB} from '../utils/patternB';
-import {patternC} from '../utils/patternC';
+import {getDatabase, ref, set} from 'firebase/database';
+import firebaseInit from '../utils/firebaseInit';
 
-interface styleProps {
-  theme: {[key: string]: string};
-}
+firebaseInit();
 
-// const Container = styled`
-//   flex: 1;
-//   background-color: ${(props: styleProps) => props.theme.fifth};
-// `;
 const Title = styled.Text`
   color: white;
   font-size: 30px;
@@ -52,7 +45,7 @@ const RadioBtn = styled.View`
   background-color: ${(props: {
     theme: {[k: string]: string};
     isSelected: boolean;
-  }) => (props.isSelected ? props.theme.text : 'transparent')};
+  }) => (props.isSelected ? props.theme.main : 'transparent')};
   margin: 0px 7px;
 `;
 const RadioText = styled.Text`

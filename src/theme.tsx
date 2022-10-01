@@ -12,7 +12,7 @@ export const darkTheme: {[k: string]: string} = {
   text: 'white',
   main: 'black',
 
-  modalMain: '#EE7A76',
+  modalMain: '#018786',
   btnReverse: 'black',
 };
 
