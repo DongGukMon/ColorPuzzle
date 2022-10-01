@@ -64,9 +64,8 @@ const RadioText = styled.Text`
 const Home = () => {
   const setIsStarted = useCallback(useSetRecoilState(isStartedState), []);
   const theme = useRecoilValue(themeState);
-  const setSelectedPattern = useSetRecoilState(selectedPatternState);
-  const [radioPattern, setRadioPattern] = useState('A');
-  const patternSet = {A: patternA, B: patternB, C: patternC};
+  const [selectedPattern, setSelectedPattern] =
+    useRecoilState(selectedPatternState);
 
   const [bgColor, setBgColor] = useState(new Animated.Value(0));
   const [isColorReset, setIsColorReset] = useState(false);
@@ -114,18 +113,14 @@ const Home = () => {
         <Title>Align to {theme.targetColor}</Title>
       </UpperBox>
       <MiddleBox>
-        {Object.keys(patternSet).map((type: string) => {
+        {['A', 'B', 'C'].map((type: string) => {
           return (
             <RadioContainer
               key={type}
               onPress={() => {
-                setRadioPattern(type);
-                const newPattern = patternSet[type as keyof typeof patternSet];
-                //setSelectedPattern(newPattern) 형태로 넣으면 newPattern이 실행되어 그 반환값이 저장된다.
-                //왜 그런지는 나중에 확인해볼 필요 있음
-                setSelectedPattern(() => newPattern);
+                setSelectedPattern(type);
               }}>
-              <RadioBtn isSelected={radioPattern === type} />
+              <RadioBtn isSelected={selectedPattern === type} />
               <RadioText>pattern {type}</RadioText>
             </RadioContainer>
           );

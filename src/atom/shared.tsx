@@ -1,6 +1,6 @@
 import {atom} from 'recoil';
 import {lightTheme} from '../theme';
-import {patternA} from '../utils/patternA';
+
 import {shuffle} from '../utils/shuffle';
 
 export const isStartedState = atom({
@@ -25,5 +25,5 @@ export const stopwatchPropsState = atom({
 
 export const selectedPatternState = atom({
   key: `selectedPatternState${Math.random()}`,
-  default: patternA,
+  default: 'A',
 });

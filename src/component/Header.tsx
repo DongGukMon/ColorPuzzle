@@ -26,13 +26,21 @@ const BackBtn = styled.TouchableOpacity`
 interface HeaderProps {
   setIsStarted: Function;
   isEnded: boolean;
+  setIsFailModalVisible: Function;
+  isFailed: boolean;
 }
 
-const Header = ({setIsStarted, isEnded}: HeaderProps) => {
+const Header = ({
+  setIsStarted,
+  isEnded,
+  setIsFailModalVisible,
+  isFailed,
+}: HeaderProps) => {
   const [stopwatchState, setStopwatchState] =
     useRecoilState(stopwatchPropsState);
   const theme = useRecoilValue(themeState);
-  let record = '00:00:00:000';
+  let record = '00:00:000';
+
   useEffect(() => {
     if (isEnded) {
       setStopwatchState({
@@ -51,6 +59,24 @@ const Header = ({setIsStarted, isEnded}: HeaderProps) => {
     }
   }, [isEnded]);
 
+  useEffect(() => {
+    if (isFailed) {
+      setStopwatchState({
+        start: false,
+        stop: true,
+        reset: true,
+        record,
+      });
+    } else {
+      setStopwatchState({
+        start: true,
+        stop: false,
+        reset: false,
+        record,
+      });
+    }
+  }, [isFailed]);
+
   return (
     <SHeader>
       <BackBtn onPress={() => setIsStarted(false)}>
@@ -61,7 +87,14 @@ const Header = ({setIsStarted, isEnded}: HeaderProps) => {
         reset={stopwatchState.reset}
         stop={stopwatchState.stop}
         msecs={true}
-        getTime={(time: string) => (record = time)}
+        getTime={(time: string) => {
+          record = time;
+
+          if (record.startsWith('00:03:9')) {
+            record = '60:00:000';
+            setIsFailModalVisible(true);
+          }
+        }}
         options={{
           text: {
             fontSize: 26,

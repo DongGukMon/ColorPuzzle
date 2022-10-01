@@ -9,6 +9,7 @@ import {isAllSame} from '../utils/isAllSame';
 import CompleteModal from '../component/CompleteModal';
 import Header from '../component/Header';
 import {shuffle} from '../utils/shuffle';
+import FailModal from '../component/FailMoal';
 
 const {width} = Dimensions.get('window');
 
@@ -45,7 +46,10 @@ const BtnText = styled.Text`
 
 const GameContainer = () => {
   const [focusedIndex, setFocusedIndex] = useState(0);
+
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [isFailModalVisible, setIsFailModalVisible] = useState(false);
+
   const setIsStarted = useSetRecoilState(isStartedState);
   const [puzzleSet, setPuzzleSet] = useRecoilState(puzzleSetState);
 
@@ -62,8 +66,17 @@ const GameContainer = () => {
         isVisible={isModalVisible}
         setIsVisible={setIsModalVisible}
       />
+      <FailModal
+        isVisible={isFailModalVisible}
+        setIsVisible={setIsFailModalVisible}
+      />
       <GamePage index={focusedIndex} />
-      <Header setIsStarted={setIsStarted} isEnded={isModalVisible} />
+      <Header
+        setIsStarted={setIsStarted}
+        isEnded={isModalVisible}
+        isFailed={isFailModalVisible}
+        setIsFailModalVisible={setIsFailModalVisible}
+      />
       <ButtonContainer>
         {Array.from({length: 5}).map((_: unknown, index: number) => (
           <ButtonWrapper key={index}>
