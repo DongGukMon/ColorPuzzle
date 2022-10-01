@@ -1,7 +1,7 @@
-import React, {useEffect, useInsertionEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
 import styled from 'styled-components/native';
-import {Stopwatchs} from 'react-native-stopwatch-timer/d';
+import Stopwatch from '../utils/stopwatch';
 import {useRecoilState, useRecoilValue} from 'recoil';
 import {themeState, stopwatchPropsState} from '../atom/shared';
 
@@ -82,7 +82,7 @@ const Header = ({
       <BackBtn onPress={() => setIsStarted(false)}>
         <Icon name="arrow-back" size={30} />
       </BackBtn>
-      <Stopwatchs
+      <Stopwatch
         start={stopwatchState.start}
         reset={stopwatchState.reset}
         stop={stopwatchState.stop}
