@@ -12,9 +12,9 @@ interface puzzleSetType {
 export const patternC = (puzzleSet: puzzleSetType, index: number) => {
   const puzzleValues = Object.values(puzzleSet);
   const puzzleLength = puzzleValues.length;
-  const prevIndex = index <= 1 ? puzzleLength + index - 2 : index - 1;
+  const prevIndex = index <= 1 ? puzzleLength + index - 2 : index - 2;
   const nextIndex =
-    index >= puzzleLength - 2 ? index - (puzzleLength - 2) : index + 1;
+    index >= puzzleLength - 2 ? index - (puzzleLength - 2) : index + 2;
 
   const prevPage = numberToName(prevIndex);
   const page = numberToName(index);
