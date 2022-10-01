@@ -90,7 +90,7 @@ const Header = ({
         getTime={(time: string) => {
           record = time;
 
-          if (record.startsWith('00:03:9')) {
+          if (record.startsWith('59:59:9')) {
             record = '60:00:000';
             setIsFailModalVisible(true);
           }
