@@ -11,7 +11,7 @@ interface ModalButtonProps {
   text: string;
   callback: Function;
   type: 'fill' | 'empty';
-  modal: 'complete' | 'fail';
+  modal?: 'complete' | 'fail';
 }
 
 const SMainButton = styled.TouchableOpacity`
