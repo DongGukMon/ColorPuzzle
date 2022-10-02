@@ -30,5 +30,10 @@ export const selectedPatternState = atom({
 
 export const enrollModalVisibleState = atom({
   key: `enrollModalVisibleState${Math.random()}`,
-  default: true,
+  default: false,
+});
+
+export const usernameState = atom({
+  key: `username${Math.random()}`,
+  default: '',
 });

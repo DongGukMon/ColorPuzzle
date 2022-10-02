@@ -130,7 +130,7 @@ const Ranking = () => {
       <Separator />
       <FlatList
         data={[
-          {rank: '1', name: 'nico', record: '00:35:05'},
+          {rank: '1', name: 'AAAAAAAAAAAA', record: '00:35:05'},
           {rank: '2', name: 'nico', record: '00:35:05'},
           {rank: '3', name: 'nico', record: '00:35:05'},
           {rank: '4', name: 'nico', record: '00:35:05'},

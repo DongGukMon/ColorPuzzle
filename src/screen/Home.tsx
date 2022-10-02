@@ -3,7 +3,12 @@ import styled from 'styled-components/native';
 import {useRecoilValue, useSetRecoilState} from 'recoil';
 import MainButton from '../component/MainButton';
 import {isStartedState, themeState} from '../atom/shared';
-import {Animated, SafeAreaView} from 'react-native';
+import {
+  Animated,
+  KeyboardAvoidingView,
+  Platform,
+  SafeAreaView,
+} from 'react-native';
 import {getDatabase, ref, set} from 'firebase/database';
 import firebaseInit from '../utils/firebaseInit';
 
@@ -78,6 +83,10 @@ const Home = () => {
 
   return (
     <Animated.View style={{flex: 1, backgroundColor: animatedColor}}>
+      {/* <KeyboardAvoidingView
+        style={{flex: 1}}
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+        keyboardVerticalOffset={70}> */}
       <EnrollModal />
       <SafeAreaView style={{flex: 1}}>
         <UpperBox>
@@ -89,6 +98,7 @@ const Home = () => {
           <MainButton text="도전하기" callback={() => setIsStarted(true)} />
         </LowerBox>
       </SafeAreaView>
+      {/* </KeyboardAvoidingView> */}
     </Animated.View>
   );
 };

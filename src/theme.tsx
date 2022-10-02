@@ -1,7 +1,7 @@
 import {theme} from './constants';
 export const darkTheme: {[k: string]: string} = {
   name: theme.dark,
-  targetColor: 'PUPPLE',
+  targetColor: 'PURPLE',
 
   first: '#292929',
   second: '#DF802F',
@@ -14,6 +14,8 @@ export const darkTheme: {[k: string]: string} = {
 
   modalMain: '#018786',
   btnReverse: '#1F2022',
+
+  placeholder: 'rgba(255, 255, 255, 0.7)',
 };
 
 export const lightTheme: {[k: string]: string} = {
@@ -31,4 +33,6 @@ export const lightTheme: {[k: string]: string} = {
 
   modalMain: '#81C6EE',
   btnReverse: 'white',
+
+  placeholder: 'rgba(0, 0, 0, 0.7)',
 };
