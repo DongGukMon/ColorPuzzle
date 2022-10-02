@@ -8,6 +8,7 @@ import {getDatabase, ref, set} from 'firebase/database';
 import firebaseInit from '../utils/firebaseInit';
 
 import HomeContents from '../component/Home/HomeContents';
+import EnrollModal from '../component/Home/EnrollModal';
 
 firebaseInit();
 
@@ -77,6 +78,7 @@ const Home = () => {
 
   return (
     <Animated.View style={{flex: 1, backgroundColor: animatedColor}}>
+      <EnrollModal />
       <SafeAreaView style={{flex: 1}}>
         <UpperBox>
           <Title>Align to {theme.targetColor}</Title>

@@ -1,8 +1,8 @@
 import React, {useCallback} from 'react';
 import {Dimensions, FlatList, View} from 'react-native';
-import {useRecoilValue} from 'recoil';
+import {useRecoilValue, useSetRecoilState} from 'recoil';
 import styled from 'styled-components/native';
-import {themeState} from '../../atom/shared';
+import {enrollModalVisibleState, themeState} from '../../atom/shared';
 
 interface styleProps {
   theme: {[k: string]: string};
@@ -92,7 +92,7 @@ const Row = styled.View`
 `;
 
 const Ranking = () => {
-  const theme = useRecoilValue(themeState);
+  const setIsVisible = useSetRecoilState(enrollModalVisibleState);
   const isMedal = useCallback((rank: string) => {
     if (Number(rank) <= 3) {
       return true;
@@ -123,7 +123,7 @@ const Ranking = () => {
     <RankingContainer>
       <HeaderContainer>
         <Title>Ranking</Title>
-        <EnrollBtn>
+        <EnrollBtn onPress={() => setIsVisible(true)}>
           <EnrollText>Enroll</EnrollText>
         </EnrollBtn>
       </HeaderContainer>

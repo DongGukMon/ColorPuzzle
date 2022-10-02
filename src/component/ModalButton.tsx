@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components/native';
-import {stopwatchPropsState} from '../atom/shared';
 
 interface styleProps {
   theme: {[key: string]: string};
@@ -11,7 +10,7 @@ interface ModalButtonProps {
   text: string;
   callback: Function;
   type: 'fill' | 'empty';
-  modal?: 'complete' | 'fail';
+  modal?: 'complete' | 'fail' | 'common';
 }
 
 const SMainButton = styled.TouchableOpacity`
