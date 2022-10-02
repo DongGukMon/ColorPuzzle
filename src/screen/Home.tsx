@@ -9,10 +9,12 @@ import {
   FlatList,
   SafeAreaView,
   Text,
+  TouchableOpacity,
   View,
 } from 'react-native';
 import {getDatabase, ref, set} from 'firebase/database';
 import firebaseInit from '../utils/firebaseInit';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 firebaseInit();
 
@@ -38,29 +40,6 @@ const LowerBox = styled.View`
   height: 20%;
   justify-content: center;
   align-items: center;
-`;
-const RadioContainer = styled.TouchableOpacity`
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  margin: 10px;
-`;
-const RadioBtn = styled.View`
-  width: 50px;
-  height: 50px;
-  border-radius: 25px;
-  border-width: 5px;
-  border-color: white;
-  background-color: ${(props: {
-    theme: {[k: string]: string};
-    isSelected: boolean;
-  }) => (props.isSelected ? props.theme.main : 'transparent')};
-  margin: 0px 7px;
-`;
-const RadioText = styled.Text`
-  color: white;
-  font-weight: bold;
-  font-size: 36px;
 `;
 
 const FlexBox = styled.View`
@@ -89,6 +68,14 @@ const PatternText = styled.Text`
   color: ${(props: {theme: {[k: string]: string}}) => props.theme.text};
 `;
 
+const ChevronBtn = styled.TouchableOpacity`
+  z-index: 1;
+  position: absolute;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+`;
+
 const Home = () => {
   const setIsStarted = useCallback(useSetRecoilState(isStartedState), []);
   const theme = useRecoilValue(themeState);
@@ -112,6 +99,38 @@ const Home = () => {
           theme.fourth,
         ],
       });
+
+  const returnOffset = (
+    pattern: 'A' | 'B' | 'C' | string,
+    type: 'prev' | 'current' | 'next',
+  ) => {
+    const index = pattern === 'A' ? 0 : pattern === 'B' ? 1 : 2;
+
+    if (type === 'current') {
+      const offset = width * 0.85 * index;
+      return {x: offset, y: 0};
+    } else if (type === 'prev') {
+      if (index === 0) {
+        return {x: 0, y: 0};
+      } else {
+        const offset = width * 0.85 * (index - 1);
+        return {x: offset, y: 0};
+      }
+    } else if (type === 'next') {
+      if (index === 2) {
+        return {x: width * 0.85 * index, y: 0};
+      } else {
+        const offset = width * 0.85 * (index + 1);
+        return {x: offset, y: 0};
+      }
+    } else {
+      return {x: 0, y: 0};
+    }
+  };
+
+  const [currentPattern, setCurrentPattern] = useState(
+    returnOffset(selectedPattern, 'current'),
+  );
 
   const colorChange = async (nowColor: any) => {
     Animated.timing(nowColor, {
@@ -153,6 +172,12 @@ const Home = () => {
     setSelectedPattern(patternItem[nowIndex]);
   };
 
+  const onChevronPress = (type: 'prev' | 'current' | 'next') => {
+    const offset = returnOffset(selectedPattern, type);
+    setCurrentPattern(offset);
+    setSelectedPattern(patternItem[offset.x / (width * 0.85)]);
+  };
+
   return (
     <Animated.View style={{flex: 1, backgroundColor: animatedColor}}>
       <SafeAreaView style={{flex: 1}}>
@@ -162,6 +187,23 @@ const Home = () => {
         <MiddleBox>
           <FlexBox style={{height: 90}}>
             <ContentContainer>
+              <ChevronBtn
+                onPress={() => {
+                  onChevronPress('prev');
+                }}>
+                <Icon name="chevron-back-outline" size={30} color={'white'} />
+              </ChevronBtn>
+              <ChevronBtn
+                onPress={() => {
+                  onChevronPress('next');
+                }}
+                style={{right: 0}}>
+                <Icon
+                  name="chevron-forward-outline"
+                  size={30}
+                  color={'white'}
+                />
+              </ChevronBtn>
               <FlatList
                 data={patternItem}
                 keyExtractor={item => item}
@@ -170,25 +212,13 @@ const Home = () => {
                 pagingEnabled
                 onMomentumScrollEnd={onScrollEnd}
                 showsHorizontalScrollIndicator={false}
+                contentOffset={currentPattern}
               />
             </ContentContainer>
           </FlexBox>
           <FlexBox style={{flex: 1}}>
             <ContentContainer></ContentContainer>
           </FlexBox>
-
-          {/* {['A', 'B', 'C'].map((type: string) => {
-          return (
-            <RadioContainer
-              key={type}
-              onPress={() => {
-                setSelectedPattern(type);
-              }}>
-              <RadioBtn isSelected={selectedPattern === type} />
-              <RadioText>pattern {type}</RadioText>
-            </RadioContainer>
-          );
-        })} */}
         </MiddleBox>
         <LowerBox>
           <MainButton text="도전하기" callback={() => setIsStarted(true)} />
