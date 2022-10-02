@@ -10,10 +10,10 @@ export const darkTheme: {[k: string]: string} = {
   fifth: '#3700B3',
 
   text: 'white',
-  main: 'black',
+  main: '#1F2022',
 
   modalMain: '#018786',
-  btnReverse: 'black',
+  btnReverse: '#1F2022',
 };
 
 export const lightTheme: {[k: string]: string} = {
