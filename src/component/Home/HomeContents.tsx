@@ -20,6 +20,8 @@ const ContentContainer = styled.View`
   height: 100%;
   background-color: ${(props: {theme: {[k: string]: any}}) => props.theme.main};
   border-radius: 10px;
+  border-width: 2px;
+  border-color: white;
 `;
 
 const HomeContents = () => {
