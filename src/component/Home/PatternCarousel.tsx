@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import {Dimensions, FlatList} from 'react-native';
-import {useRecoilState} from 'recoil';
+import {useRecoilState, useRecoilValue} from 'recoil';
 import styled from 'styled-components/native';
-import {selectedPatternState} from '../../atom/shared';
+import {selectedPatternState, themeState} from '../../atom/shared';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {returnOffset} from '../../utils/returnOffset';
 
@@ -30,6 +30,7 @@ const PatternText = styled.Text`
 `;
 
 const PatternCarousel = () => {
+  const currentTheme = useRecoilValue(themeState);
   const [selectedPattern, setSelectedPattern] =
     useRecoilState(selectedPatternState);
 
@@ -67,14 +68,18 @@ const PatternCarousel = () => {
         onPress={() => {
           onChevronPress('prev');
         }}>
-        <Icon name="chevron-back-outline" size={30} color={'white'} />
+        <Icon name="chevron-back-outline" size={30} color={currentTheme.text} />
       </ChevronBtn>
       <ChevronBtn
         onPress={() => {
           onChevronPress('next');
         }}
         style={{right: 0}}>
-        <Icon name="chevron-forward-outline" size={30} color={'white'} />
+        <Icon
+          name="chevron-forward-outline"
+          size={30}
+          color={currentTheme.text}
+        />
       </ChevronBtn>
       <FlatList
         data={patternItem}

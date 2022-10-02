@@ -21,7 +21,7 @@ const ContentContainer = styled.View`
   background-color: ${(props: {theme: {[k: string]: any}}) => props.theme.main};
   border-radius: 10px;
   border-width: 2px;
-  border-color: white;
+  border-color: ${(props: {theme: {[k: string]: any}}) => props.theme.text}; ;
 `;
 
 const HomeContents = () => {

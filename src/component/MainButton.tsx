@@ -13,10 +13,10 @@ const SMainButton = styled.TouchableOpacity`
   align-items: center;
   border-radius: 10px;
   border-width: 2px;
-  border-color: white;
+  border-color: ${(props: styleProps) => props.theme.text};
 `;
 const BtnText = styled.Text`
-  color: white;
+  color: ${(props: styleProps) => props.theme.text};
   font-size: 24px;
   font-weight: bold;
 `;

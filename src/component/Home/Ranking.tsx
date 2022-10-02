@@ -7,9 +7,8 @@ import {themeState} from '../../atom/shared';
 interface styleProps {
   theme: {[k: string]: string};
   size?: number;
-  fontColor?: string;
-  bgColor?: string;
   isRank?: boolean;
+  isMedal?: boolean;
 }
 
 interface rankItemType {
@@ -42,7 +41,7 @@ const EnrollBtn = styled.TouchableOpacity`
   background-color: ${(props: styleProps) => props.theme.fourth};
   border-radius: 8px;
   border-width: 2px;
-  border-color: white;
+  border-color: ${(props: styleProps) => props.theme.text};
   justify-content: center;
   align-items: center;
 `;
@@ -72,7 +71,7 @@ const Separator = styled.View`
 
 const RnakText = styled.Text`
   color: ${(props: styleProps) =>
-    props.fontColor ? props.fontColor : props.theme.text};
+    props.isMedal ? props.theme.third : props.theme.text};
   font-weight: 600;
   font-size: ${(props: styleProps) => props.size}px;
   font-style: ${(props: styleProps) => (props.isRank ? 'italic' : 'normal')};
@@ -94,22 +93,22 @@ const Row = styled.View`
 
 const Ranking = () => {
   const theme = useRecoilValue(themeState);
-  const rankColor = useCallback((rank: string) => {
+  const isMedal = useCallback((rank: string) => {
     if (Number(rank) <= 3) {
-      return {fontColor: theme.second, isRank: true};
+      return true;
     } else {
-      return {fontColor: theme.text, isRank: true};
+      return false;
     }
   }, []);
 
   const _renderItem = ({item}: {item: rankItemType}) => {
     const {name, rank, record} = item;
-    const {fontColor, isRank} = rankColor(rank);
+
     return (
       <RankItemContainer>
         <Row>
           <CircleView>
-            <RnakText isRank={isRank} fontColor={fontColor} size={24}>
+            <RnakText isRank={true} isMedal={isMedal(rank)} size={24}>
               {rank}
             </RnakText>
           </CircleView>
