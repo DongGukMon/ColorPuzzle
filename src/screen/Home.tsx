@@ -2,7 +2,7 @@ import React, {useCallback, useEffect, useState} from 'react';
 import styled from 'styled-components/native';
 import {useRecoilValue, useSetRecoilState} from 'recoil';
 import MainButton from '../component/MainButton';
-import {isStartedState, themeState} from '../atom/shared';
+import {isStartedState, stopwatchPropsState, themeState} from '../atom/shared';
 import {
   Animated,
   KeyboardAvoidingView,
@@ -18,7 +18,7 @@ import EnrollModal from '../component/Home/EnrollModal';
 firebaseInit();
 
 const Title = styled.Text`
-  color: white;
+  color: ${(props: {theme: {[k: string]: string}}) => props.theme.text};
   font-size: 30px;
   font-weight: bold;
   margin-bottom: 20px;
@@ -83,10 +83,6 @@ const Home = () => {
 
   return (
     <Animated.View style={{flex: 1, backgroundColor: animatedColor}}>
-      {/* <KeyboardAvoidingView
-        style={{flex: 1}}
-        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-        keyboardVerticalOffset={70}> */}
       <EnrollModal />
       <SafeAreaView style={{flex: 1}}>
         <UpperBox>
@@ -98,7 +94,6 @@ const Home = () => {
           <MainButton text="도전하기" callback={() => setIsStarted(true)} />
         </LowerBox>
       </SafeAreaView>
-      {/* </KeyboardAvoidingView> */}
     </Animated.View>
   );
 };

@@ -80,7 +80,7 @@ const Header = ({
   return (
     <SHeader>
       <BackBtn onPress={() => setIsStarted(false)}>
-        <Icon name="close" size={30} />
+        <Icon name="close" size={30} color={theme.text} />
       </BackBtn>
       <Stopwatch
         start={stopwatchState.start}
