@@ -17,3 +17,8 @@ react native 상태관리와 다크모드 공부를 위한 color puzzle game입�
 - 닉네임을 등록한 상태로 게임을 클리어하면 자동으로 서버 랭킹에 참여 (각 패턴별 99위까지 기록)
 - 게임 클리어시 소요시간과 함께 클리어 모달 노출(다시하기, 홈으로 돌아가기 버튼 선택 가능)
 - 60분 이내에 클리어를 실패할 경우 실패 모달 노출(다시하기, 홈으로 돌아가기 버튼 선택 가능)
+
+## 결과물
+⬇Click to youtube⬇
+
+[<img width="625" alt="image" src="https://user-images.githubusercontent.com/30457954/193556546-c3114ded-ac40-4d31-b61f-e7ec86873245.png">](https://youtu.be/Ud4YB8UO3n0)
