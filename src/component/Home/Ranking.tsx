@@ -1,8 +1,16 @@
-import React, {useCallback} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {Dimensions, FlatList, View} from 'react-native';
 import {useRecoilValue, useSetRecoilState} from 'recoil';
 import styled from 'styled-components/native';
-import {enrollModalVisibleState, themeState} from '../../atom/shared';
+import {
+  enrollModalVisibleState,
+  selectedPatternState,
+  themeState,
+} from '../../atom/shared';
+import firebaseInit from '../../utils/firebaseInit';
+import {getDatabase, ref, get, child} from 'firebase/database';
+
+firebaseInit();
 
 interface styleProps {
   theme: {[k: string]: string};
@@ -91,8 +99,12 @@ const Row = styled.View`
   align-items: flex-end;
 `;
 
+const dbRef = ref(getDatabase());
+
 const Ranking = () => {
   const setIsVisible = useSetRecoilState(enrollModalVisibleState);
+  const [rankingData, setRankingData] = useState([]);
+  const selectedPattern = useRecoilValue(selectedPatternState);
   const isMedal = useCallback((rank: string) => {
     if (Number(rank) <= 3) {
       return true;
@@ -102,6 +114,10 @@ const Ranking = () => {
   }, []);
 
   const _renderItem = ({item}: {item: rankItemType}) => {
+    if (!item) {
+      return null;
+    }
+
     const {name, rank, record} = item;
 
     return (
@@ -119,25 +135,40 @@ const Ranking = () => {
     );
   };
 
+  useEffect(() => {
+    get(child(dbRef, `ranking/${selectedPattern}`))
+      .then(snapshot => {
+        if (snapshot.exists()) {
+          setRankingData(snapshot.val());
+        } else {
+          setRankingData([]);
+        }
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  }, [selectedPattern]);
+
   return (
     <RankingContainer>
       <HeaderContainer>
-        <Title>Ranking</Title>
+        <Title>{selectedPattern} Ranking</Title>
         <EnrollBtn onPress={() => setIsVisible(true)}>
           <EnrollText>Enroll</EnrollText>
         </EnrollBtn>
       </HeaderContainer>
       <Separator />
-      <FlatList
-        data={[
-          {rank: '1', name: 'AAAAAAAAAAAA', record: '00:35:05'},
-          {rank: '2', name: 'nico', record: '00:35:05'},
-          {rank: '3', name: 'nico', record: '00:35:05'},
-          {rank: '4', name: 'nico', record: '00:35:05'},
-        ]}
-        keyExtractor={(_, index) => index + ''}
-        renderItem={_renderItem}
-      />
+      {rankingData.length === 0 ? (
+        <View style={{justifyContent: 'center', alignItems: 'center', flex: 1}}>
+          <Title>지금 도전하면 당신이 1등!!!</Title>
+        </View>
+      ) : (
+        <FlatList
+          data={rankingData}
+          keyExtractor={(_, index) => index + ''}
+          renderItem={_renderItem}
+        />
+      )}
     </RankingContainer>
   );
 };

@@ -9,6 +9,8 @@
     "types": [
       
       "@types/styled-components-react-native"
-    ]
+    ],
+   
   },
+  
 }

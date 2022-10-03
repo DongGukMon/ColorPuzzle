@@ -57,7 +57,7 @@ const Header = ({
         reset: false,
         record,
       });
-      checkRecord(record, username, selectedPattern);
+      Boolean(username) && checkRecord(record, username, selectedPattern);
     } else {
       setStopwatchState({
         start: true,

@@ -5,6 +5,7 @@ import styled from 'styled-components/native';
 import {selectedPatternState, themeState} from '../../atom/shared';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {returnOffset} from '../../utils/returnOffset';
+import {checkRecord} from '../../utils/whiteRecord';
 
 const ChevronBtn = styled.TouchableOpacity`
   z-index: 1;
