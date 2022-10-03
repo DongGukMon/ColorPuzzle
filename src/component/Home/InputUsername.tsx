@@ -2,7 +2,11 @@ import React, {useEffect} from 'react';
 import {TextInput} from 'react-native';
 import {useRecoilState, useRecoilValue, useSetRecoilState} from 'recoil';
 import styled from 'styled-components/native';
-import {themeState, usernameState} from '../../atom/shared';
+import {
+  enrollModalVisibleState,
+  themeState,
+  usernameState,
+} from '../../atom/shared';
 import {useForm} from 'react-hook-form';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -47,6 +51,7 @@ const NameTextInput = styled.TextInput`
 const InputContainer = ({setEdited}: {setEdited: Function}) => {
   const currentTheme = useRecoilValue(themeState);
   const [username, setUsername] = useRecoilState(usernameState);
+  const setIsVisible = useSetRecoilState(enrollModalVisibleState);
   const {register, watch, getValues, setValue} = useForm();
 
   const name = 'username';
@@ -89,6 +94,7 @@ const InputContainer = ({setEdited}: {setEdited: Function}) => {
       <SaveBtn
         onPress={() => {
           storeName(getValues(name));
+          setIsVisible(false);
         }}>
         <SaveText>SAVE</SaveText>
       </SaveBtn>
