@@ -1,12 +1,10 @@
 import React, {useState} from 'react';
-import {Dimensions, FlatList} from 'react-native';
+import {FlatList, useWindowDimensions} from 'react-native';
 import {useRecoilState, useRecoilValue} from 'recoil';
 import styled from 'styled-components/native';
 import {selectedPatternState, themeState} from '../../atom/shared';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {returnOffset} from '../../utils/returnOffset';
-
-const {width} = Dimensions.get('window');
 
 const ChevronBtn = styled.TouchableOpacity`
   z-index: 1;
@@ -17,7 +15,9 @@ const ChevronBtn = styled.TouchableOpacity`
 `;
 
 const PatternItem = styled.View`
-  width: ${width * 0.85}px;
+  width: ${(props: {width: number}) => {
+    return props.width * 0.84;
+  }}px;
   height: 100%;
   justify-content: center;
   align-items: center;
@@ -30,6 +30,7 @@ const PatternText = styled.Text`
 `;
 
 const PatternCarousel = () => {
+  const {width} = useWindowDimensions();
   const currentTheme = useRecoilValue(themeState);
   const [selectedPattern, setSelectedPattern] =
     useRecoilState(selectedPatternState);
@@ -40,7 +41,7 @@ const PatternCarousel = () => {
 
   const _renderItem = ({item}: {item: string}) => {
     return (
-      <PatternItem>
+      <PatternItem width={width}>
         <PatternText>{item} pattern</PatternText>
       </PatternItem>
     );
@@ -50,9 +51,11 @@ const PatternCarousel = () => {
 
   const onScrollEnd = (e: any) => {
     const contnetOffset = e.nativeEvent.contentOffset.x;
+
     const nowIndex = Math.floor(
-      Math.floor(contnetOffset) / Math.floor(width * 0.85),
+      Math.floor(contnetOffset + 50) / Math.floor(width * 0.85),
     );
+
     setSelectedPattern(patternItem[nowIndex]);
   };
 

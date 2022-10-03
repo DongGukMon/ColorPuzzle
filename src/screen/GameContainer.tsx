@@ -3,7 +3,11 @@ import {View, Dimensions, Text} from 'react-native';
 import styled from 'styled-components/native';
 import GamePage from './GamePage';
 import {numberToName} from '../utils/numberToName';
-import {isStartedState, puzzleSetState} from '../atom/shared';
+import {
+  isStartedState,
+  puzzleSetState,
+  selectedPatternState,
+} from '../atom/shared';
 import {useSetRecoilState, useRecoilValue, useRecoilState} from 'recoil';
 import {isAllSame} from '../utils/isAllSame';
 import CompleteModal from '../component/CompleteModal';
@@ -52,6 +56,7 @@ const GameContainer = () => {
 
   const setIsStarted = useSetRecoilState(isStartedState);
   const [puzzleSet, setPuzzleSet] = useRecoilState(puzzleSetState);
+  const selectedPattern = useRecoilValue(selectedPatternState);
 
   if (isAllSame(Object.values(puzzleSet), true) && !isModalVisible) {
     setIsModalVisible(true);

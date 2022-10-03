@@ -3,7 +3,13 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import styled from 'styled-components/native';
 import Stopwatch from '../utils/stopwatch';
 import {useRecoilState, useRecoilValue} from 'recoil';
-import {themeState, stopwatchPropsState} from '../atom/shared';
+import {
+  themeState,
+  stopwatchPropsState,
+  selectedPatternState,
+  usernameState,
+} from '../atom/shared';
+import {checkRecord} from '../utils/whiteRecord';
 
 const SHeader = styled.View`
   width: 100%;
@@ -39,6 +45,8 @@ const Header = ({
   const [stopwatchState, setStopwatchState] =
     useRecoilState(stopwatchPropsState);
   const theme = useRecoilValue(themeState);
+  const selectedPattern = useRecoilValue(selectedPatternState);
+  const username = useRecoilValue(usernameState);
   let record = '00:00:000';
 
   useEffect(() => {
@@ -49,6 +57,7 @@ const Header = ({
         reset: false,
         record,
       });
+      checkRecord(record, username, selectedPattern);
     } else {
       setStopwatchState({
         start: true,

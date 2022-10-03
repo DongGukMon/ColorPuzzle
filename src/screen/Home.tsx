@@ -2,20 +2,12 @@ import React, {useCallback, useEffect, useState} from 'react';
 import styled from 'styled-components/native';
 import {useRecoilValue, useSetRecoilState} from 'recoil';
 import MainButton from '../component/MainButton';
-import {isStartedState, stopwatchPropsState, themeState} from '../atom/shared';
-import {
-  Animated,
-  KeyboardAvoidingView,
-  Platform,
-  SafeAreaView,
-} from 'react-native';
-import {getDatabase, ref, set} from 'firebase/database';
+import {isStartedState, themeState} from '../atom/shared';
+import {Animated, SafeAreaView} from 'react-native';
 import firebaseInit from '../utils/firebaseInit';
 
 import HomeContents from '../component/Home/HomeContents';
 import EnrollModal from '../component/Home/EnrollModal';
-
-firebaseInit();
 
 const Title = styled.Text`
   color: ${(props: {theme: {[k: string]: string}}) => props.theme.text};
