@@ -21,4 +21,22 @@ react native 상태관리와 다크모드 공부를 위한 color puzzle game입�
 ## 결과물
 ⬇Click to youtube⬇
 
-[<img width="300" alt="image" src="https://user-images.githubusercontent.com/30457954/193556546-c3114ded-ac40-4d31-b61f-e7ec86873245.png">](https://youtu.be/Ud4YB8UO3n0)
+[<img width="200" alt="image" src="https://user-images.githubusercontent.com/30457954/193556546-c3114ded-ac40-4d31-b61f-e7ec86873245.png">](https://youtu.be/Ud4YB8UO3n0)
+
+
+---
+### 패턴 가이드
+페이지를 누르면 패턴에 해당하는 페이지의 색깔이 변합니다. 색깔이 변하는 순서는 게임 내 페이지 이동 탭 버튼의 순서와 동일합니다.
+
+<div>A pattern) 누른 페이지와 양 옆의 페이지 색깔이 변합니다.</div>
+
+![A](https://user-images.githubusercontent.com/30457954/193641601-820e0319-dccb-4743-ae3b-043415e84b07.gif)
+
+<div>B pattern) 누른 페이지의 양 옆 페이지 색깔이 변합니다.</div>
+
+![C_AdobeExpress](https://user-images.githubusercontent.com/30457954/193641967-c2320297-5268-4b30-9ac8-620187478e6e.gif)
+
+<div>C pattern) 누른 페이지와 페이지로부터 양옆으로 2칸 떨어진 페이지의 색깔이 변합니다.</div>
+
+![B_AdobeExpress](https://user-images.githubusercontent.com/30457954/193642091-0db665da-bcc1-49f8-92f3-d0c0ca1cfd80.gif)
+
