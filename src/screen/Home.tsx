@@ -38,16 +38,16 @@ const Home = () => {
   const animatedColor = isColorReset
     ? bgColor.interpolate({
         inputRange: [4, 5],
-        outputRange: [theme.fourth, theme.fifth],
+        outputRange: [theme.third, theme.fourth],
       })
     : bgColor.interpolate({
         inputRange: [0, 1, 2, 3, 4],
         outputRange: [
+          theme.fourth,
           theme.fifth,
           theme.first,
           theme.second,
           theme.third,
-          theme.fourth,
         ],
       });
 
