@@ -30,14 +30,16 @@ react native 상태관리와 다크모드 공부를 위한 color puzzle game입�
 
 <div>A pattern) 누른 페이지와 양 옆의 페이지 색깔이 변합니다.</div>
 
-![A](https://user-images.githubusercontent.com/30457954/193641601-820e0319-dccb-4743-ae3b-043415e84b07.gif)
+<img width="200" src="https://user-images.githubusercontent.com/30457954/193641601-820e0319-dccb-4743-ae3b-043415e84b07.gif"/>
 
 <div>B pattern) 누른 페이지의 양 옆 페이지 색깔이 변합니다.</div>
 
-![B_AdobeExpress](https://user-images.githubusercontent.com/30457954/193642091-0db665da-bcc1-49f8-92f3-d0c0ca1cfd80.gif)
+<img width="200" src="https://user-images.githubusercontent.com/30457954/193741211-76d2e2ba-b83c-4dad-a62b-7164409d2ea3.gif"/>
+
+
 
 <div>C pattern) 누른 페이지와 페이지로부터 양옆으로 2칸 떨어진 페이지의 색깔이 변합니다.</div>
 
-![C_AdobeExpress](https://user-images.githubusercontent.com/30457954/193641967-c2320297-5268-4b30-9ac8-620187478e6e.gif)
+<img width="200" src="https://user-images.githubusercontent.com/30457954/193641967-c2320297-5268-4b30-9ac8-620187478e6e.gif"/>
 
 
