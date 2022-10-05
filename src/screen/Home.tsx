@@ -8,6 +8,8 @@ import firebaseInit from '../utils/firebaseInit';
 
 import HomeContents from '../component/Home/HomeContents';
 import EnrollModal from '../component/Home/EnrollModal';
+import HomeHeader from '../component/HomeHeader';
+import HelpModal from '../component/Home/HelpModal';
 
 const Title = styled.Text`
   color: ${(props: {theme: {[k: string]: string}}) => props.theme.text};
@@ -31,6 +33,7 @@ const LowerBox = styled.View`
 
 const Home = () => {
   const setIsStarted = useCallback(useSetRecoilState(isStartedState), []);
+  const [isHelpModalVisible, setIsHelpModalVisible] = useState(true);
   const theme = useRecoilValue(themeState);
 
   const [bgColor, setBgColor] = useState(new Animated.Value(0));
@@ -75,6 +78,11 @@ const Home = () => {
 
   return (
     <Animated.View style={{flex: 1, backgroundColor: animatedColor}}>
+      <HomeHeader setIsVisible={setIsHelpModalVisible} />
+      <HelpModal
+        isVisible={isHelpModalVisible}
+        setIsVisible={setIsHelpModalVisible}
+      />
       <EnrollModal />
       <SafeAreaView style={{flex: 1}}>
         <UpperBox>
