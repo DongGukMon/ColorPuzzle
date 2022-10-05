@@ -5,8 +5,6 @@ import {themeState} from '../../atom/shared';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {useRecoilValue} from 'recoil';
 
-const {width, height} = Dimensions.get('window');
-
 const contentTexts: {
   [k: string]: {title: string; body: string; route: number};
 } = {
@@ -17,17 +15,17 @@ const contentTexts: {
   },
   1: {
     title: 'A 패턴',
-    body: '클릭시 특정 패턴에 따라 색상이 변하는 5개의 페이지를 모두 sky blue 색상으로 맞추면 게임이 클리어됩니다. (다크모드의 경우 진한 남색입니다.)',
+    body: 'A 패턴은 클릭한 페이지를 포함해 그 양옆 페이지의 색상이 다음 순서로 변화합니다.',
     route: require('../../assets/1.gif'),
   },
   2: {
     title: 'B 패턴',
-    body: '클릭시 특정 패턴에 따라 색상이 변하는 5개의 페이지를 모두 sky blue 색상으로 맞추면 게임이 클리어됩니다. (다크모드의 경우 진한 남색입니다.)',
+    body: 'B 패턴은 클릭한 페이지를 제외한 양옆 페이지의 색상이 다음 순서로 변화합니다.',
     route: require('../../assets/2.gif'),
   },
   3: {
     title: 'C 패턴',
-    body: '클릭시 특정 패턴에 따라 색상이 변하는 5개의 페이지를 모두 sky blue 색상으로 맞추면 게임이 클리어됩니다. (다크모드의 경우 진한 남색입니다.)',
+    body: 'C 패턴은 클릭한 페이지를 포함해 양 옆으로 2칸 떨어진 페이지의 색상이 다음 순서로 변화합니다.',
     route: require('../../assets/3.gif'),
   },
 };

@@ -33,7 +33,7 @@ const LowerBox = styled.View`
 
 const Home = () => {
   const setIsStarted = useCallback(useSetRecoilState(isStartedState), []);
-  const [isHelpModalVisible, setIsHelpModalVisible] = useState(true);
+  const [isHelpModalVisible, setIsHelpModalVisible] = useState(false);
   const theme = useRecoilValue(themeState);
 
   const [bgColor, setBgColor] = useState(new Animated.Value(0));
