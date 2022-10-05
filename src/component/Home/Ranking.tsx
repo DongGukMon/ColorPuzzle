@@ -114,6 +114,7 @@ const Ranking = () => {
   }, []);
 
   const _renderItem = ({item}: {item: rankItemType}) => {
+    //firebase에서 데이터를 가져오면  0번째 아이템에 undefined가 나오므로, 해당 케이스 걸러주기 위해
     if (!item) {
       return null;
     }
@@ -128,7 +129,9 @@ const Ranking = () => {
               {rank}
             </RnakText>
           </CircleView>
-          <RnakText size={20}>{name}</RnakText>
+          <RnakText size={20}>
+            {name.length >= 10 ? name.slice(0, 10) + '...' : name}
+          </RnakText>
         </Row>
         <RnakText size={20}>{record}</RnakText>
       </RankItemContainer>
