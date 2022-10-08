@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {View, Dimensions, Text} from 'react-native';
+import {View, Dimensions, Text, SafeAreaView} from 'react-native';
 import styled from 'styled-components/native';
 import GamePage from './GamePage';
 import {numberToName} from '../utils/numberToName';
@@ -76,12 +76,14 @@ const GameContainer = () => {
         setIsVisible={setIsFailModalVisible}
       />
       <GamePage index={focusedIndex} />
+
       <Header
         setIsStarted={setIsStarted}
         isEnded={isModalVisible}
         isFailed={isFailModalVisible}
         setIsFailModalVisible={setIsFailModalVisible}
       />
+
       <ButtonContainer>
         {Array.from({length: 5}).map((_: unknown, index: number) => (
           <ButtonWrapper key={index}>

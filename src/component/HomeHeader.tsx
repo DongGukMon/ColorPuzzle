@@ -4,6 +4,7 @@ import styled from 'styled-components/native';
 
 import {useRecoilValue} from 'recoil';
 import {themeState} from '../atom/shared';
+import {Platform} from 'react-native';
 
 const SHeader = styled.View`
   z-index: 1;
@@ -13,11 +14,11 @@ const SHeader = styled.View`
   top: 0px;
   align-items: center;
 `;
-const InfoBtn = styled.TouchableOpacity`
+const HelpBtn = styled.TouchableOpacity`
   position: absolute;
   width: 35px;
   height: 35px;
-  top: 50px;
+  top: ${(props: {isIos: boolean}) => (props.isIos ? 50 : 25)}px;
   right: 20px;
   justify-content: center;
   align-items: center;
@@ -25,15 +26,17 @@ const InfoBtn = styled.TouchableOpacity`
 
 const HomeHeader = ({setIsVisible}: {setIsVisible: Function}) => {
   const theme = useRecoilValue(themeState);
+  const isIos = Platform.OS === 'ios';
 
   return (
     <SHeader>
-      <InfoBtn
+      <HelpBtn
         onPress={() => {
           setIsVisible(true);
-        }}>
+        }}
+        isIos={isIos}>
         <Icon name="help-circle-outline" size={36} color={theme.text} />
-      </InfoBtn>
+      </HelpBtn>
     </SHeader>
   );
 };

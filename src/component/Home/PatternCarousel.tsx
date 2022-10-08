@@ -1,5 +1,9 @@
 import React, {useState} from 'react';
-import {FlatList, useWindowDimensions} from 'react-native';
+import {
+  FlatList,
+  TouchableWithoutFeedback,
+  useWindowDimensions,
+} from 'react-native';
 import {useRecoilState, useRecoilValue} from 'recoil';
 import styled from 'styled-components/native';
 import {selectedPatternState, themeState} from '../../atom/shared';

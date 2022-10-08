@@ -64,3 +64,5 @@ buck-out/
 /vendor/bundle/
 
 src/utils/firebaseInit.tsx
+android/app/release_key.keystore
+android/gradle.properties

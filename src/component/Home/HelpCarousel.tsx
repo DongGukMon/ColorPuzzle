@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Image, ScrollView, View, Dimensions} from 'react-native';
+import {Image, ScrollView, View} from 'react-native';
 import styled from 'styled-components/native';
 import {themeState} from '../../atom/shared';
 import Icon from 'react-native-vector-icons/Ionicons';

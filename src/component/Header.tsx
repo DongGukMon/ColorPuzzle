@@ -10,20 +10,21 @@ import {
   usernameState,
 } from '../atom/shared';
 import {checkRecord} from '../utils/whiteRecord';
+import {Platform} from 'react-native';
 
 const SHeader = styled.View`
   width: 100%;
   height: 100px;
   position: absolute;
   top: 0px;
-
   align-items: center;
 `;
 const BackBtn = styled.TouchableOpacity`
   position: absolute;
   width: 35px;
   height: 35px;
-  top: 50px;
+  top: ${(props: {isIos: boolean}) => (props.isIos ? 50 : 25)}px;
+
   left: 20px;
   justify-content: center;
   align-items: center;
@@ -48,6 +49,8 @@ const Header = ({
   const selectedPattern = useRecoilValue(selectedPatternState);
   const username = useRecoilValue(usernameState);
   let record = '00:00:000';
+
+  const isIos = Platform.OS === 'ios';
 
   useEffect(() => {
     if (isEnded) {
@@ -88,9 +91,10 @@ const Header = ({
 
   return (
     <SHeader>
-      <BackBtn onPress={() => setIsStarted(false)}>
-        <Icon name="close" size={30} color={theme.text} />
+      <BackBtn onPress={() => setIsStarted(false)} isIos={isIos}>
+        <Icon name="chevron-back-outline" size={30} color={theme.text} />
       </BackBtn>
+
       <Stopwatch
         start={stopwatchState.start}
         reset={stopwatchState.reset}
@@ -109,7 +113,7 @@ const Header = ({
             fontSize: 26,
             fontWeight: 'bold',
             color: theme.text,
-            marginTop: 50,
+            marginTop: isIos ? 50 : 25,
           },
         }}
       />

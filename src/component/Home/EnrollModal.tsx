@@ -67,6 +67,7 @@ const EnrollModal = () => {
           <Title>Join the ranking</Title>
         </SectionBox>
         <Separator />
+
         <DescriptionSection>
           <View onStartShouldSetResponder={() => true}>
             <DescriptionText>{descriptionContent}</DescriptionText>
@@ -77,6 +78,7 @@ const EnrollModal = () => {
             <DescriptionFooterText>{descriptionFooter2}</DescriptionFooterText>
           </View>
         </DescriptionSection>
+
         <SectionBox height={80}>
           {edited ? (
             <ShowUsername setEdited={setEdited} />
