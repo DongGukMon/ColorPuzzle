@@ -15,6 +15,7 @@ import {ThemeProvider} from 'styled-components/native';
 import {darkTheme, lightTheme} from './src/theme';
 import AppRoot from './src/screen/AppRoot';
 import SplashScreen from 'react-native-splash-screen';
+import CodePush from 'react-native-code-push';
 
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -35,4 +36,15 @@ const App = () => {
   );
 };
 
-export default App;
+const codePushOptions = {
+  checkFrequency: CodePush.CheckFrequency.ON_APP_START,
+  // updateDialog: {
+  //   title: '...',
+  //   optionalUpdateMessage: '...',
+  //   optionalInstallButtonLabel: '업데이트',
+  //   optionalIgnoreButtonLabel: '아니요',
+  // },
+  installMode: CodePush.InstallMode.IMMEDIATE,
+};
+
+export default CodePush(codePushOptions)(App);

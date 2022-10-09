@@ -22,19 +22,7 @@ const ContentContainer = styled.View`
   flex: 1;
 `;
 
-const {width, height} = Dimensions.get('window');
-
 const EnrollModal = ({isVisible, setIsVisible}: HeplModalProps) => {
-  const username = useRecoilValue(usernameState);
-
-  const [edited, setEdited] = useState(false);
-
-  useEffect(() => {
-    //처음에 username이 공백이었다가 업데이트 되기 때문에 edited은 항상 false로 찍히고
-    //그 초기값으로 렌더링되는 문제 해결을 위해
-    setEdited(Boolean(username));
-  }, [username]);
-
   return (
     <ClosableModalLayout isVisible={isVisible} setIsVisible={setIsVisible}>
       <ModalContainer>

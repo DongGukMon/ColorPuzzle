@@ -66,3 +66,6 @@ buck-out/
 src/utils/firebaseInit.tsx
 android/app/release_key.keystore
 android/gradle.properties
+
+android/app/src/main/assets/appcenter-config.json
+ios/RecoilPuzzle/AppCenter-Config.plist

@@ -91,7 +91,7 @@ const Home = () => {
 
         <HomeContents />
         <LowerBox>
-          <MainButton text="도전하기" callback={() => setIsStarted(true)} />
+          <MainButton text="Challenge" callback={() => setIsStarted(true)} />
         </LowerBox>
       </SafeAreaView>
     </Animated.View>

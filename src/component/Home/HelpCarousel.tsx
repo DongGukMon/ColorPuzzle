@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Image, ScrollView, View} from 'react-native';
+import {Image, Platform, ScrollView, View} from 'react-native';
 import styled from 'styled-components/native';
 import {themeState} from '../../atom/shared';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -121,7 +121,9 @@ const HelpCarousel = () => {
           <ContentText>{contentTexts[index].body}</ContentText>
         </ContentTextBox>
         <View style={{flex: 1}}>
-          <Image style={{width: '100%'}} source={contentTexts[index].route} />
+          {Platform.OS === 'ios' && (
+            <Image style={{width: '100%'}} source={contentTexts[index].route} />
+          )}
         </View>
       </ItemContainer>
     );
