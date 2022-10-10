@@ -8,6 +8,7 @@ react native 상태관리와 다크모드 공부를 위한 color puzzle game입�
 - recoil
 - styled-component
 - firebase realtime database
+- codepush
 
 ## 구현 내용
 - 스마트폰 테마에 따라 자동으로 전환되는 Light mode와 Dark mode
