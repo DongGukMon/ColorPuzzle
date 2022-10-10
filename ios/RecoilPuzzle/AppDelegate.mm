@@ -9,8 +9,6 @@
 #import "RNSplashScreen.h" 
 
 #import <AppCenterReactNative.h>
-#import <AppCenterReactNativeAnalytics.h>
-#import <AppCenterReactNativeCrashes.h>
 #import <CodePush/CodePush.h>
 
 
@@ -46,8 +44,7 @@ static NSString *const kRNConcurrentRoot = @"concurrentRoot";
   RCTBridge *bridge = [[RCTBridge alloc] initWithDelegate:self launchOptions:launchOptions];
 
 [AppCenterReactNative register];
-[AppCenterReactNativeAnalytics registerWithInitiallyEnabled:true];
-[AppCenterReactNativeCrashes registerWithAutomaticProcessing];
+
 
 #if RCT_NEW_ARCH_ENABLED
   _contextContainer = std::make_shared<facebook::react::ContextContainer const>();
