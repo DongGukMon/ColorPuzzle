@@ -24,6 +24,7 @@ react native 상태관리와 다크모드 공부를 위한 color puzzle game입�
 
 [<img width="200" alt="image" src="https://user-images.githubusercontent.com/30457954/193556546-c3114ded-ac40-4d31-b61f-e7ec86873245.png">](https://youtu.be/Ud4YB8UO3n0)
 
+#### Apple App Store: https://apps.apple.com/us/app/skytab/id6443697750
 
 ---
 ### 패턴 가이드
