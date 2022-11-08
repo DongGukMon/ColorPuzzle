@@ -1,4 +1,4 @@
-# TabSky
+# SkyTab
 react native 상태관리와 다크모드 공부를 위한 color puzzle game입니다.
 특정 패턴으로 움직이는 5개의 페이지를 모두 같은 색깔(테마에 따라 하늘색 or 보라색(?))로 맞추면 되는 규칙이며, A,B,C 세가지 패턴이 있습니다.
 
@@ -25,6 +25,7 @@ react native 상태관리와 다크모드 공부를 위한 color puzzle game입�
 [<img width="200" alt="image" src="https://user-images.githubusercontent.com/30457954/193556546-c3114ded-ac40-4d31-b61f-e7ec86873245.png">](https://youtu.be/Ud4YB8UO3n0)
 
 #### Apple App Store: https://apps.apple.com/us/app/skytab/id6443697750
+#### Google Play Store: https://play.google.com/store/apps/details?id=com.recoilpuzzle&pli=1
 
 ---
 ### 패턴 가이드
