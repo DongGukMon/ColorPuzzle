@@ -41,15 +41,57 @@ platform :ios do
     end
   end
 
-
-  desc "Push a new beta build to TestFlight"
-  lane :beta do |options|
-    cert
-    sigh(force: true)
+  desc 'version update'
+  lane :version do |options|
     updateVersion(options)
-
     increment_build_number(xcodeproj: "RecoilPuzzle.xcodeproj")
-    build_app(workspace: "RecoilPuzzle.xcworkspace", scheme: "RecoilPuzzle")
-    upload_to_testflight
   end
+
+
+  desc "firebase_app_distribution"
+  lane :beta do
+    match(
+      type: "development",
+      app_identifier: 'org.reactjs.native.example.RecoilPuzzle',
+      readonly: true
+    )
+
+    build_app(workspace: "RecoilPuzzle.xcworkspace", scheme: "SkyTab_Staging", export_method:"development")
+
+    firebase_app_distribution(
+        testers: "ehdrnr9346@naver.com",
+        release_notes: "beta test",
+    )
+  end
+
+  desc "release production"
+  lane :release do
+    match(
+      type: "appstore",
+      app_identifier: 'org.reactjs.native.example.RecoilPuzzle',
+      readonly: true
+    )
+
+    build_app(workspace: "RecoilPuzzle.xcworkspace", scheme: "RecoilPuzzle", export_method:"app-store")
+
+    upload_to_app_store(
+      force: true,
+      reject_if_possible: true,
+      skip_metadata: false,
+      skip_screenshots: true,
+      languages: ['ko'],
+      release_notes: {'ko'=>"안정성 개선"},
+      submit_for_review: true,
+      automatic_release: true,
+    )
+    
+  end
+
+
+
 end
+
+
+
+  
+

@@ -43,9 +43,14 @@ const descriptionContent = '닉네임을 설정하고 랭킹에 참여해보세�
 const descriptionContent2 = '닉네임만 설정하면 자동으로 기록이 랭크됩니다.';
 const descriptionContent3 =
   '네이밍이 고민이시라면 인스타 아이디를 닉네임으로 설정하는 것도 방법이에요.';
-const descriptionFooter2 = '부적절한 닉네임은 통보없이 삭제될 수 있습니다.';
+
 const descriptionFooter =
   '공백은 입력하실 수 없어요. 입력시 모든 공백이 제거됩니다.';
+const descriptionFooter2 = '부적절한 닉네임은 통보없이 삭제될 수 있습니다.';
+const descriptionFooter3 =
+  '랭킹 삭제를 원하시면 다음 메일로 연락주세요.(ehdrnr9346@gmail.com)';
+const descriptionFooter4 =
+  '개인정보처리방침: https://typical-twister-23b.notion.site/Sky-Tab-e129b157c7aa41c286f6ab1f794f539a';
 
 const EnrollModal = () => {
   const [isVisible, setIsVisible] = useRecoilState(enrollModalVisibleState);
@@ -76,6 +81,8 @@ const EnrollModal = () => {
             <Separator style={{marginBottom: 20}} />
             <DescriptionFooterText>{descriptionFooter}</DescriptionFooterText>
             <DescriptionFooterText>{descriptionFooter2}</DescriptionFooterText>
+            <DescriptionFooterText>{descriptionFooter3}</DescriptionFooterText>
+            <DescriptionFooterText>{descriptionFooter4}</DescriptionFooterText>
           </View>
         </DescriptionSection>
 
