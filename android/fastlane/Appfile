@@ -1,2 +1,2 @@
-json_key_file("fastlane/pc-api-8402104828363593494-445-34835b988fa7.json") # Path to the json secret file - Follow https://docs.fastlane.tools/actions/supply/#setup to get one
+json_key_file("fastlane/json_secret_file.json") # Path to the json secret file - Follow https://docs.fastlane.tools/actions/supply/#setup to get one
 package_name("com.recoilpuzzle") # e.g. com.krausefx.app

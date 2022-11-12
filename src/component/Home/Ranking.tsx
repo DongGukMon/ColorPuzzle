@@ -157,7 +157,7 @@ const Ranking = () => {
       <HeaderContainer>
         <Title>{selectedPattern} Ranking</Title>
         <EnrollBtn onPress={() => setIsVisible(true)}>
-          <EnrollText>등록</EnrollText>
+          <EnrollText>Enroll</EnrollText>
         </EnrollBtn>
       </HeaderContainer>
       <Separator />

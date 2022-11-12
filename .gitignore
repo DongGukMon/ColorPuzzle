@@ -56,6 +56,9 @@ buck-out/
 **/fastlane/screenshots
 **/fastlane/test_output
 
+
+
+
 # Bundle artifact
 *.jsbundle
 
@@ -63,10 +66,24 @@ buck-out/
 /ios/Pods/
 /vendor/bundle/
 
-src/utils/firebaseInit.tsx
+
+#firebase key 환경변수화 완료
+#android release.keystore
+#android / ios fastlane .env.default
+#firebase_login_credentials
+#google service plist / json (firebase)
+#fastlane json_secret_file.json (android)
+
+
 android/app/release_key.keystore
 android/gradle.properties
 
-android/app/src/main/assets/appcenter-config.json
-ios/RecoilPuzzle/AppCenter-Config.plist
-ios/fastlane/.env.default
+android/app/google-services.json
+ios/GoogleService-Info.plist
+
+**/fastlane/firebase_login_credencials.json
+
+**/.env.default
+**/.env
+
+android/fastlane/json_secret_file.json
