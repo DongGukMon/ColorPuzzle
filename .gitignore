@@ -67,12 +67,13 @@ buck-out/
 /vendor/bundle/
 
 
-#firebase key 환경변수화 완료
-#android release.keystore
-#android / ios fastlane .env.default
-#firebase_login_credentials
-#google service plist / json (firebase)
-#fastlane json_secret_file.json (android)
+#firebase key 환경변수화 완료 => 반영 완료
+#android release.keystore => 반영 완료
+#android / ios fastlane .env.default => 반영 완료
+#android/gradle.properties => 반영 완료
+#firebase_login_credentials => 반영 완료
+#google service plist / json (firebase) => 반영 완료
+#fastlane json_secret_file.json (android) => 반영 완료
 
 
 android/app/release_key.keystore
