@@ -124,14 +124,14 @@ jobs:
         env:
           GRADLE_PROPERTIES: ${{secrets.GRADLE_PROPERTIES}}
       - name: Generate firebase login credencials file
-          run: |
-            cd android && && cd fastlane echo $FIREBASE_LOGIN_CREDENCIALS | base64 --decode >> firebase_login_credentials.json && cd .. && cd ..
-          env:
-            FIREBASE_LOGIN_CREDENCIALS: ${{secrets.FIREBASE_LOGIN_CREDENCIALS}}
+        run: |
+          cd android && && cd fastlane echo $FIREBASE_LOGIN_CREDENCIALS | base64 --decode >> firebase_login_credentials.json && cd .. && cd ..
+        env:
+          FIREBASE_LOGIN_CREDENCIALS: ${{secrets.FIREBASE_LOGIN_CREDENCIALS}}
       - name: Generate firebase json secret file
-          run: |
-            cd android && && cd fastlane echo $JSON_SECRET_FILE | base64 --decode >> json_secret_file.json && cd .. && cd ..
-          env:
-            JSON_SECRET_FILE: ${{secrets.JSON_SECRET_FILE}}
+        run: |
+          cd android && && cd fastlane echo $JSON_SECRET_FILE | base64 --decode >> json_secret_file.json && cd .. && cd ..
+        env:
+          JSON_SECRET_FILE: ${{secrets.JSON_SECRET_FILE}}
       - name: Execute Fastlane command
         run: cd android && fastlane beta
