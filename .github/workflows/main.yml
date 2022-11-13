@@ -60,7 +60,7 @@ jobs:
           GOOGLE_SERVICES_IOS: ${{secrets.GOOGLE_SERVICES_IOS}}
       - name: Generate firebase login credencials file
         run: |
-          cd ios && && cd fastlane echo $FIREBASE_LOGIN_CREDENCIALS | base64 --decode >> firebase_login_credentials.json && cd .. && cd ..
+          cd ios && cd fastlane echo $FIREBASE_LOGIN_CREDENCIALS | base64 --decode >> firebase_login_credentials.json && cd .. && cd ..
         env:
           FIREBASE_LOGIN_CREDENCIALS: ${{secrets.FIREBASE_LOGIN_CREDENCIALS}}
       - name: Execute Fastlane command
