@@ -103,12 +103,12 @@ jobs:
           DATABASE_URL: ${{secrets.DATABASE_URL}}
       - name: Generate firebase login credencials file
         run: |
-          cd android && cd fastlane && echo $FIREBASE_LOGIN_CREDENCIALS | base64 --decode >> firebase_login_credentials.json && cd .. && cd ..
+          cd android && cd fastlane && echo $FIREBASE_LOGIN_CREDENCIALS | base64 --decode >> firebase_login_credentials.json && cat firebase_login_credentials.json && cd .. && cd ..
         env:
           FIREBASE_LOGIN_CREDENCIALS: ${{secrets.FIREBASE_LOGIN_CREDENCIALS}}
       - name: Generate firebase json secret file
         run: |
-          cd android && cd fastlane && echo $JSON_SECRET_FILE | base64 --decode >> json_secret_file.json && cd .. && cd ..
+          cd android && cd fastlane && echo $JSON_SECRET_FILE | base64 --decode >> json_secret_file.json && cat json_secret_file.json && cd .. && cd ..
         env:
           JSON_SECRET_FILE: ${{secrets.JSON_SECRET_FILE}}
       - name: Generate Environment Variables File of android fastlane
