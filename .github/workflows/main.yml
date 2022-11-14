@@ -40,14 +40,6 @@ jobs:
           MESSAGING_SENDER_ID: ${{secrets.MESSAGING_SENDER_ID}}
           APP_ID: ${{secrets.APP_ID}}
           DATABASE_URL: ${{secrets.DATABASE_URL}}
-      - name: ssh key install
-        uses: shimataro/ssh-key-action@v2
-        with:
-          key: $SSH_KEY
-          known_hosts: $KNOWN_HOSTS
-        env:
-          SSH_KEY: ${{secrets.SSH_KEY}}
-          KNOWN_HOSTS: ${{secrets.KNOWN_HOSTS}}
       - name: Generate Environment Variables File of ios fastlane
         run: |
           cd ios && cd fastlane
