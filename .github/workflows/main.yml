@@ -44,7 +44,7 @@ jobs:
         run: |
           cd ios && cd fastlane
           echo "FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD=$FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD" >> .env.default
-          echo "MATCH_KEYCHAIN_PASSWORD=$MATCH_KEYCHAIN_PASSWORD" >> .env.default
+          echo "KEYCHAIN_PASSWORD=$MATCH_KEYCHAIN_PASSWORD" >> .env.default
           echo "GOOGLE_APPLICATION_CREDENTIALS=$GOOGLE_APPLICATION_CREDENTIALS" >> .env.default
           echo "FIREBASE_APP_ID=$FIREBASE_APP_ID_IOS" >> .env.default
           echo "MATCH_GIT_BASIC_AUTHORIZATION=$MATCH_GIT_BASIC_AUTHORIZATION" >> .env.default
