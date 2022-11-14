@@ -115,7 +115,7 @@ jobs:
       - name: Generate Environment Variables File of android fastlane
         run: |
           cd android && cd fastlane
-          echo "GOOGLE_APPLICATION_CREDENTIALS=fastlane/firebase_login_credentials.json" >> .env.default
+          echo "GOOGLE_APPLICATION_CREDENTIALS=#{Dir.pwd}/fastlane/firebase_login_credentials.json" >> .env.default
           echo "FIREBASE_APP_ID=$FIREBASE_APP_ID_ANDROID" >> .env.default
           cd .. && cd ..
         env:

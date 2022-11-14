@@ -97,6 +97,7 @@ platform :android do
   lane :beta do
 
     gradle(task: "clean bundleReleaseStaging")
+    puts ENV["GOOGLE_APPLICATION_CREDENTIALS"]
     firebase_app_distribution(
         app:ENV["FIREBASE_APP_ID"],
         testers: "ehdrnr9346@naver.com",
