@@ -85,17 +85,12 @@ jobs:
       - uses: actions/setup-ruby@v1
         with:
           ruby-version: '2.x'
-      - name: Generate Google Service json file
-        run: |
-          cd android && cd app && echo $GOOGLE_SERVICES_ANDROID | base64 --decode >> google-services.json && cat google-services.json && cd .. && cd ..
-        env:
-          GOOGLE_SERVICES_ANDROID: ${{secrets.GOOGLE_SERVICES_ANDROID}}
-      # - name: gem install
-      #   run: gem install bundler -v 1.17.2
-      # - name: Install Fastlane
-      #   run: cd android && bundle install && cd ..
-      # - name: Install packages
-      #   run: yarn install
+      - name: gem install
+        run: gem install bundler -v 1.17.2
+      - name: Install Fastlane
+        run: cd android && bundle install && cd ..
+      - name: Install packages
+        run: yarn install
       - name: Generate Environment Variables File of Root Folder
         run: |
           echo "API_KEY=$API_KEY" >> .env
@@ -122,6 +117,11 @@ jobs:
         env:
           GOOGLE_APPLICATION_CREDENTIALS: ${{secrets.GOOGLE_APPLICATION_CREDENTIALS}}
           FIREBASE_APP_ID_ANDROID: ${{secrets.FIREBASE_APP_ID_ANDROID}}
+      - name: Generate Google Service json file
+        run: |
+          cd android && cd app && echo $GOOGLE_SERVICES_ANDROID | base64 --decode >> google-services.json && cd .. && cd ..
+        env:
+          GOOGLE_SERVICES_ANDROID: ${{secrets.GOOGLE_SERVICES_ANDROID}}
       - name: Generate Release KeyStore file
         run: |
           cd android && cd app && echo $RELEASE_KEYSTORE_BASE64 | base64 --decode >> release_key.keystore && cd .. && cd ..
