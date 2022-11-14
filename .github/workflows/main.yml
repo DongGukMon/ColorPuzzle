@@ -83,8 +83,8 @@ jobs:
         run: gem install bundler -v 1.17.2
       - name: Install Fastlane
         run: cd android && bundle install && cd ..
-      # - name: Install packages
-      #   run: yarn install
+      - name: Install packages
+        run: yarn install
       - name: Generate Environment Variables File of Root Folder
         run: |
           echo "API_KEY=$API_KEY" >> .env
