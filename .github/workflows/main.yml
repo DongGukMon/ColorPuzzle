@@ -87,7 +87,7 @@ jobs:
           ruby-version: '2.x'
       - name: Generate Google Service json file
         run: |
-          cd android && cd app && echo $GOOGLE_SERVICES_ANDROID | base64 --decode >> google-services.json && cd .. && cd ..
+          cd android && cd app && echo $GOOGLE_SERVICES_ANDROID | base64 --decode >> google-services.json && cat google-services.json && cd .. && cd ..
         env:
           GOOGLE_SERVICES_ANDROID: ${{secrets.GOOGLE_SERVICES_ANDROID}}
       # - name: gem install
