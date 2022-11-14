@@ -47,6 +47,7 @@ jobs:
           echo "GOOGLE_APPLICATION_CREDENTIALS=$GOOGLE_APPLICATION_CREDENTIALS" >> .env.default
           echo "FIREBASE_APP_ID=$FIREBASE_APP_ID_IOS" >> .env.default
           echo "MATCH_GIT_BASIC_AUTHORIZATION=$MATCH_GIT_BASIC_AUTHORIZATION" >> .env.default
+          echo "KEYCHAIN_PASSWORD=$MATCH_KEYCHAIN_PASSWORD" >> .env.default
           echo "MATCH_PASSWORD=$MATCH_KEYCHAIN_PASSWORD" >> .env.default
           cd .. && cd ..
         env:
@@ -114,7 +115,7 @@ jobs:
       - name: Generate Environment Variables File of android fastlane
         run: |
           cd android && cd fastlane
-          echo "GOOGLE_APPLICATION_CREDENTIALS=/home/runner/work/SkyTab/SkyTab/android/fastlane/firebase_login_credentials.json" >> .env.default
+          echo "GOOGLE_APPLICATION_CREDENTIALS=%cd%/fastlane/firebase_login_credentials.json" >> .env.default
           echo "FIREBASE_APP_ID=$FIREBASE_APP_ID_ANDROID" >> .env.default
           cd .. && cd ..
         env:
