@@ -79,10 +79,10 @@ jobs:
       - uses: actions/setup-ruby@v1
         with:
           ruby-version: '2.x'
-      # - name: gem install
-      #   run: gem install bundler -v 1.17.2
-      # - name: Install Fastlane
-      #   run: cd android && bundle install && cd ..
+      - name: gem install
+        run: gem install bundler -v 1.17.2
+      - name: Install Fastlane
+        run: cd android && bundle install && cd ..
       # - name: Install packages
       #   run: yarn install
       - name: Generate Environment Variables File of Root Folder

@@ -96,7 +96,7 @@ platform :android do
   desc "firebase app distribute"
   lane :beta do
 
-    gradle(task: "clean bundleReleaseStaging")
+    # gradle(task: "clean bundleReleaseStaging")
     firebase_app_distribution(
         app:ENV["FIREBASE_APP_ID"],
         testers: "ehdrnr9346@naver.com",
