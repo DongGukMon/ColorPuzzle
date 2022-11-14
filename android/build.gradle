@@ -17,7 +17,8 @@ buildscript {
     }
     repositories {
         google()
-        mavenCentral()
+        // mavenCentral()
+        jcenter()
     }
     dependencies {
         classpath('com.android.tools.build:gradle:7.3.0')
@@ -47,7 +48,7 @@ allprojects {
                 excludeGroup "com.facebook.react"
             }
         }
-        google()
+        google()        
         maven { url 'https://www.jitpack.io' }
     }
 }
