@@ -19,10 +19,10 @@ jobs:
         run: gem install bundler -v 1.17.2
       - name: Install Fastlane
         run: cd ios && bundle install && cd ..
-      #- name: Install packages
-      #  run: yarn install
-      #- name: Install pods
-      #  run: cd ios && pod install && cd ..
+      - name: Install packages
+       run: yarn install
+      - name: Install pods
+       run: cd ios && pod install && cd ..
       - name: Generate Environment Variables File of Root Folder
         run: |
           echo "API_KEY=$API_KEY" >> .env
@@ -67,11 +67,6 @@ jobs:
           cd ios && echo $GOOGLE_SERVICES_IOS | base64 --decode >> GoogleService-Info.plist && cd ..
         env:
           GOOGLE_SERVICES_IOS: ${{secrets.GOOGLE_SERVICES_IOS}}
-      - name: GOOGLE_SERVICES file check
-        run: |
-          cd ios && echo $GOOGLE_SERVICES_IOS && cat GoogleService-Info.plist && cd ..
-        env:
-          GOOGLE_SERVICES_IOS: ${{secrets.GOOGLE_SERVICES_IOS}}
       - name: Generate firebase login credencials file
         run: |
           cd ios && cd fastlane && echo $FIREBASE_LOGIN_CREDENCIALS | base64 --decode >> firebase_login_credentials.json && cd .. && cd ..
@@ -90,12 +85,17 @@ jobs:
       - uses: actions/setup-ruby@v1
         with:
           ruby-version: '2.x'
-      - name: gem install
-        run: gem install bundler -v 1.17.2
-      - name: Install Fastlane
-        run: cd android && bundle install && cd ..
-      #- name: Install packages
-      #  run: yarn install
+      - name: Generate Google Service json file
+        run: |
+          cd android && cd app && echo $GOOGLE_SERVICES_ANDROID | base64 --decode >> google-services.json && cd .. && cd ..
+        env:
+          GOOGLE_SERVICES_ANDROID: ${{secrets.GOOGLE_SERVICES_ANDROID}}
+      # - name: gem install
+      #   run: gem install bundler -v 1.17.2
+      # - name: Install Fastlane
+      #   run: cd android && bundle install && cd ..
+      # - name: Install packages
+      #   run: yarn install
       - name: Generate Environment Variables File of Root Folder
         run: |
           echo "API_KEY=$API_KEY" >> .env
@@ -122,16 +122,6 @@ jobs:
         env:
           GOOGLE_APPLICATION_CREDENTIALS: ${{secrets.GOOGLE_APPLICATION_CREDENTIALS}}
           FIREBASE_APP_ID_ANDROID: ${{secrets.FIREBASE_APP_ID_ANDROID}}
-      - name: base64 code check
-        run: |
-          echo $GOOGLE_SERVICES_ANDROID
-        env:
-          GOOGLE_SERVICES_ANDROID: ${{secrets.GOOGLE_SERVICES_ANDROID}}
-      - name: Generate Google Service json file
-        run: |
-          cd android && cd app && echo $GOOGLE_SERVICES_ANDROID | base64 --decode >> google-services.json && cd .. && cd ..
-        env:
-          GOOGLE_SERVICES_ANDROID: ${{secrets.GOOGLE_SERVICES_ANDROID}}
       - name: Generate Release KeyStore file
         run: |
           cd android && cd app && echo $RELEASE_KEYSTORE_BASE64 | base64 --decode >> release_key.keystore && cd .. && cd ..
