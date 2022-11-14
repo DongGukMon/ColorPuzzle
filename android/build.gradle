@@ -17,8 +17,8 @@ buildscript {
     }
     repositories {
         google()
-        mavenCentral()
-        // jcenter()
+        // mavenCentral()
+        jcenter()
     }
     dependencies {
         classpath('com.android.tools.build:gradle:7.3.0')
