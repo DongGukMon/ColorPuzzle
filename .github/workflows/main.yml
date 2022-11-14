@@ -47,13 +47,14 @@ jobs:
           echo "MATCH_KEYCHAIN_PASSWORD=$MATCH_KEYCHAIN_PASSWORD" >> .env.default
           echo "GOOGLE_APPLICATION_CREDENTIALS=$GOOGLE_APPLICATION_CREDENTIALS" >> .env.default
           echo "FIREBASE_APP_ID=$FIREBASE_APP_ID_IOS" >> .env.default
-          echo "MATCH_GIT_PRIVATE_KEY=#{Dir.pwd}/fastlane/git_private_key" >> .env.default
+          echo "MATCH_GIT_BASIC_AUTHORIZATION=$MATCH_GIT_BASIC_AUTHORIZATION" >> .env.default
           cd .. && cd ..
         env:
           FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD: ${{secrets.FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD}}
           MATCH_KEYCHAIN_PASSWORD: ${{secrets.MATCH_KEYCHAIN_PASSWORD}}
           GOOGLE_APPLICATION_CREDENTIALS: ${{secrets.GOOGLE_APPLICATION_CREDENTIALS}}
           FIREBASE_APP_ID_IOS: ${{secrets.FIREBASE_APP_ID_IOS}}
+          MATCH_GIT_BASIC_AUTHORIZATION: ${{secrets.MATCH_GIT_BASIC_AUTHORIZATION}}
       - name: Generate Google Service plist file
         run: |
           cd ios && echo $GOOGLE_SERVICES_IOS | base64 --decode >> GoogleService-Info.plist && cd ..
