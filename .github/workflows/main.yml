@@ -40,7 +40,8 @@ jobs:
           MESSAGING_SENDER_ID: ${{secrets.MESSAGING_SENDER_ID}}
           APP_ID: ${{secrets.APP_ID}}
           DATABASE_URL: ${{secrets.DATABASE_URL}}
-      - uses: shimataro/ssh-key-action@v2
+      - name: ssh key install
+        uses: shimataro/ssh-key-action@v2
         with:
           key: $SSH_KEY
           known_hosts: $KNOWN_HOSTS
@@ -118,27 +119,27 @@ jobs:
           FIREBASE_APP_ID_ANDROID: ${{secrets.FIREBASE_APP_ID_ANDROID}}
       - name: Generate Google Service json file
         run: |
-          cd android && cd app && echo $GOOGLE_SERVICES_ANDROID | base64 -di >> google-services.json && cd .. && cd ..
+          cd android && cd app && echo $GOOGLE_SERVICES_ANDROID | base64 --decode >> google-services.json && cd .. && cd ..
         env:
           GOOGLE_SERVICES_ANDROID: ${{secrets.GOOGLE_SERVICES_ANDROID}}
       - name: Generate Release KeyStore file
         run: |
-          cd android && cd app && echo $RELEASE_KEYSTORE_BASE64 | base64 -di >> release_key.keystore && cd .. && cd ..
+          cd android && cd app && echo $RELEASE_KEYSTORE_BASE64 | base64 --decode >> release_key.keystore && cd .. && cd ..
         env:
           RELEASE_KEYSTORE_BASE64: ${{secrets.RELEASE_KEYSTORE_BASE64}}
       - name: Generate Gradle Properties file
         run: |
-          cd android && echo $GRADLE_PROPERTIES | base64 -di >> gradle.properties && cd ..
+          cd android && echo $GRADLE_PROPERTIES | base64 --decode >> gradle.properties && cd ..
         env:
           GRADLE_PROPERTIES: ${{secrets.GRADLE_PROPERTIES}}
       - name: Generate firebase login credencials file
         run: |
-          cd android && cd fastlane && echo $FIREBASE_LOGIN_CREDENCIALS | base64 -di >> firebase_login_credentials.json && cd .. && cd ..
+          cd android && cd fastlane && echo $FIREBASE_LOGIN_CREDENCIALS | base64 --decode >> firebase_login_credentials.json && cd .. && cd ..
         env:
           FIREBASE_LOGIN_CREDENCIALS: ${{secrets.FIREBASE_LOGIN_CREDENCIALS}}
       - name: Generate firebase json secret file
         run: |
-          cd android && cd fastlane && echo $JSON_SECRET_FILE | base64 -di >> json_secret_file.json && cd .. && cd ..
+          cd android && cd fastlane && echo $JSON_SECRET_FILE | base64 --decode >> json_secret_file.json && cd .. && cd ..
         env:
           JSON_SECRET_FILE: ${{secrets.JSON_SECRET_FILE}}
       - name: Execute Fastlane command
