@@ -68,7 +68,6 @@ platform :ios do
   desc "release production"
   lane :release do
     match(
-      git_basic_authorization: ENV["MATCH_GIT_BASIC_AUTHORIZATION"],
       type: "appstore",
       app_identifier: 'org.reactjs.native.example.RecoilPuzzle',
       readonly: true
