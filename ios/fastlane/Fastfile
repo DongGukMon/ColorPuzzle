@@ -50,6 +50,7 @@ platform :ios do
 
   desc "firebase_app_distribution"
   lane :beta do
+
     match(
       type: "development",
       app_identifier: 'org.reactjs.native.example.RecoilPuzzle',
