@@ -54,10 +54,7 @@ platform :ios do
     match(
       type: "development",
       app_identifier: 'org.reactjs.native.example.RecoilPuzzle',
-      readonly: true,
-      # force_for_new_devices:true
-      keychain_name: 'login.keychain-db',
-      # force:true
+      readonly: true
     )
 
     build_app(workspace: "RecoilPuzzle.xcworkspace", scheme: "SkyTab_Staging", export_method:"development")
