@@ -51,6 +51,7 @@ jobs:
           echo "MATCH_PASSWORD=$MATCH_KEYCHAIN_PASSWORD" >> .env.default
           echo "FASTLANE_USER=ehdrnr9346@naver.com" >> .env.default
           echo "FASTLANE_PASSWORD=$FASTLANE_PASSWORD" >> .env.default
+          echo "SPACESHIP_2FA_SMS_DEFAULT_PHONE_NUMBER=$SPACESHIP_2FA_SMS_DEFAULT_PHONE_NUMBER" >> .env.default
           cd .. && cd ..
         env:
           FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD: ${{secrets.FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD}}
@@ -59,6 +60,7 @@ jobs:
           FIREBASE_APP_ID_IOS: ${{secrets.FIREBASE_APP_ID_IOS}}
           MATCH_GIT_BASIC_AUTHORIZATION: ${{secrets.MATCH_GIT_BASIC_AUTHORIZATION}}
           FASTLANE_PASSWORD: ${{secrets.FASTLANE_PASSWORD}}
+          SPACESHIP_2FA_SMS_DEFAULT_PHONE_NUMBER: ${{secrets.SPACESHIP_2FA_SMS_DEFAULT_PHONE_NUMBER}}
       - name: Generate Google Service plist file
         run: |
           cd ios && echo $GOOGLE_SERVICES_IOS | base64 --decode >> GoogleService-Info.plist && cd ..
