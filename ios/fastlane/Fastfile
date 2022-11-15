@@ -53,7 +53,7 @@ platform :ios do
 
     match(
       app_identifier: 'org.reactjs.native.example.RecoilPuzzle',
-      readonly: true
+      readonly: false
     )
 
     build_app(workspace: "RecoilPuzzle.xcworkspace", scheme: "SkyTab_Staging")
