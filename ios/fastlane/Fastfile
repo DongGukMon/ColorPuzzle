@@ -51,16 +51,15 @@ platform :ios do
   desc "firebase_app_distribution"
   lane :beta do
 
-    # create_keychain(
-    #   name: "login.keychain",
-    #   default_keychain: true,
-    #   unlock: true,
-    #   timeout: 3600,
-    #   password:"1231",
-    #   path:'/Users/runner/Library/Keychains'
-    # )
+    create_keychain(
+      name: "login.keychain",
+      default_keychain: true,
+      unlock: true,
+      timeout: 3600,
+      password:"1231"
+    )
 
-    setup_ci
+    # setup_ci
 
     match(
       app_identifier: 'org.reactjs.native.example.RecoilPuzzle',
