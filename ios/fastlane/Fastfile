@@ -67,7 +67,6 @@ platform :ios do
   desc "release production"
   lane :release do
     match(
-      type: "appstore",
       app_identifier: 'org.reactjs.native.example.RecoilPuzzle',
       readonly: true
     )

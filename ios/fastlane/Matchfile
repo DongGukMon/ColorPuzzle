@@ -1,4 +1,4 @@
-git_url("https://github.com/DongGukMon/apple_key_store")
+git_url("https://github.com/DongGukMon/ios_signing_keys.git")
 
 storage_mode("git")
 
