@@ -50,7 +50,7 @@ jobs:
           echo "KEYCHAIN_PASSWORD=$MATCH_KEYCHAIN_PASSWORD" >> .env.default
           echo "MATCH_PASSWORD=$MATCH_KEYCHAIN_PASSWORD" >> .env.default
           echo "FASTLANE_USER=ehdrnr9346@naver.com" >> .env.default
-          echo "FASTLANE_PASSWORD=$PASTLANE_PASSWORD" >> .env.default
+          echo "FASTLANE_PASSWORD=$FASTLANE_PASSWORD" >> .env.default
           cd .. && cd ..
         env:
           FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD: ${{secrets.FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD}}
