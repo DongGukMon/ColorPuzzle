@@ -58,7 +58,7 @@ platform :ios do
       readonly: true
     )
 
-    build_app(workspace: "RecoilPuzzle.xcworkspace", scheme: "SkyTab_Staging")
+    build_app(workspace: "RecoilPuzzle.xcworkspace", scheme: "SkyTab_Staging", export_method:'app-store', export_options:{teamID:"Donguk Im")
 
     firebase_app_distribution(
         testers: "ehdrnr9346@naver.com",
