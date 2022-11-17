@@ -60,10 +60,11 @@ platform :ios do
 
     build_app(workspace: "RecoilPuzzle.xcworkspace", scheme: "SkyTab_Staging", export_method:'app-store')
 
-    firebase_app_distribution(
-        testers: "ehdrnr9346@naver.com",
-        release_notes: "beta test",
-    )
+    upload_to_testflight
+#     firebase_app_distribution(
+#         testers: "ehdrnr9346@naver.com",
+#         release_notes: "beta test",
+#     )
   end
 
   desc "release production"
